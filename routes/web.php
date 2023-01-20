@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\StudentController;
+
 
 
 Route::get('/', function () {
@@ -26,6 +28,11 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/change/password', 'ChangePassword')->name('change.password');
     Route::post('/update/password', 'UpdatePassword')->name('update.password');
      
+});
+
+ // Student All Route
+ Route::controller(StudentController::class)->group(function () {
+    Route::get('/student/all', 'StudentAll')->name('student.all');
 });
 
 
