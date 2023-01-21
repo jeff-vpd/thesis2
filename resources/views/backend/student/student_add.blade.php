@@ -9,13 +9,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Add Student Page </h4><br><br>
 
-                            {{-- @if (count($errors))
-                                @foreach ($errors->all() as $error)
-                                    <p class="alert alert-danger alert-dismissible fade show"> {{ $error }} </p>
-                                @endforeach
-                            @endif --}}
-
-                            <form method="post" action="{{ route('supplier.store') }}" id="myForm">
+                            <form method="post" action="{{ route('student.store')}}" id="myForm" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Student Name</label>
@@ -25,16 +19,63 @@
                                 </div>
                                 <!-- end row -->
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Email</label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Grade</label>
                                     <div class="form-group col-sm-10">
-                                        <input name="mobile_no" class="form-control" type="text">
+                                        <select name="grade" id="grade" class="form-select">
+                                            <option value="0">Select Grade</option>
+                                            <option value="1">Grade 1</option>
+                                            <option value="2">Grade 2</option>
+                                            <option value="3">Grade 3</option>
+                                            <option value="4">Grade 4</option>
+                                            <option value="5">Grade 5</option>
+                                            <option value="6">Grade 6</option>
+
+                                        </select>
                                     </div>
                                 </div>
                                 <!-- end row -->
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Password</label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Guardian Name</label>
                                     <div class="form-group col-sm-10">
-                                        <input name="email" class="form-control" type="email">
+                                        <input name="guardian_name" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <!-- end row -->
+                                <div class="row mb-3">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Guardian Mobile
+                                        No</label>
+                                    <div class="form-group col-sm-10">
+                                        <input name="guardian_mobile_no" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <!-- end row -->
+                                <div class="row mb-3">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Guardian Email</label>
+                                    <div class="form-group col-sm-10">
+                                        <input name="guardian_email" class="form-control" type="email">
+                                    </div>
+                                </div>
+                                <!-- end row -->
+                                <div class="row mb-3">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Address</label>
+                                    <div class="form-group col-sm-10">
+                                        <input name="address" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <!-- end row -->
+                                <div class="row mb-3">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Student Image </label>
+                                    <div class="form-group col-sm-10">
+                                        <input name="student_image" class="form-control" type="file" id="image">
+                                    </div>
+                                </div>
+                                <!-- end row -->
+
+                                <div class="row mb-3">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label"> </label>
+                                    <div class="col-sm-10">
+                                        <img id="showImage" class="rounded avatar-lg"
+                                            src=" {{ url('upload/no_image.jpg') }}" alt="Card image cap">
                                     </div>
                                 </div>
                                 <!-- end row -->
@@ -54,10 +95,19 @@
                     name: {
                         required: true,
                     },
-                    mobile_no: {
+                    grade: {
                         required: true,
                     },
-                    email: {
+                    guardian_name: {
+                        required: true,
+                    },
+                    guardian_mobile_no: {
+                        required: true,
+                    },
+                    guardian_email: {
+                        required: true,
+                    },
+                    student_image: {
                         required: true,
                     },
                     address: {
@@ -68,14 +118,23 @@
                     name: {
                         required: 'Please enter your Name',
                     },
-                    mobile_no: {
+                    grade: {
+                        required: 'Please enter your grade',
+                    },
+                    guardian_name: {
+                        required: 'Please enter your guardian name',
+                    },
+                    guardian_mobile_no: {
                         required: 'Please enter your Mobile No',
                     },
-                    email: {
+                    guardian_email: {
                         required: 'Please enter the valid Email Address',
                     },
                     address: {
                         required: 'Please enter your Address',
+                    },
+                    student_image: {
+                        required: 'Please select an Image',
                     },
                 },
                 errorElement: 'span',
@@ -89,6 +148,18 @@
                 unhighlight: function(element, errorClass, validClass) {
                     $(element).removeClass('is-invalid');
                 },
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#image').change(function(e) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#showImage').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(e.target.files['0']);
             });
         });
     </script>

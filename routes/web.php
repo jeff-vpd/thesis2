@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SubjectController;
+
 
 
 
@@ -33,7 +35,20 @@ Route::controller(AdminController::class)->group(function () {
  // Student All Route
  Route::controller(StudentController::class)->group(function () {
     Route::get('/student/all', 'StudentAll')->name('student.all');
+    Route::get('/student/add', 'StudentAdd')->name('student.add');
+    Route::post('/student/store', 'StudentStore')->name('student.store');
+
+
 });
+
+Route::controller(SubjectController::class)->group(function () {
+    Route::get('/subject/all', 'SubjectAll')->name('subject.all');
+});
+
+Route::controller(SubjectController::class)->group(function () {
+    Route::get('/subject/all', 'SubjectAll')->name('subject.all');
+});
+
 
 
  
