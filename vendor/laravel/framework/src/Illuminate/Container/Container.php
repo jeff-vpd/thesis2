@@ -426,9 +426,7 @@ class Container implements ArrayAccess, ContainerContract
     public function scopedIf($abstract, $concrete = null)
     {
         if (! $this->bound($abstract)) {
-            $this->scopedInstances[] = $abstract;
-
-            $this->singleton($abstract, $concrete);
+            $this->scoped($abstract, $concrete);
         }
     }
 
@@ -650,7 +648,25 @@ class Container implements ArrayAccess, ContainerContract
      */
     public function call($callback, array $parameters = [], $defaultMethod = null)
     {
-        return BoundMethod::call($this, $callback, $parameters, $defaultMethod);
+        $pushedToBuildStack = false;
+
+        if (is_array($callback) && ! in_array(
+            $className = (is_string($callback[0]) ? $callback[0] : get_class($callback[0])),
+            $this->buildStack,
+            true
+        )) {
+            $this->buildStack[] = $className;
+
+            $pushedToBuildStack = true;
+        }
+
+        $result = BoundMethod::call($this, $callback, $parameters, $defaultMethod);
+
+        if ($pushedToBuildStack) {
+            array_pop($this->buildStack);
+        }
+
+        return $result;
     }
 
     /**
@@ -708,7 +724,7 @@ class Container implements ArrayAccess, ContainerContract
                 throw $e;
             }
 
-            throw new EntryNotFoundException($id, $e->getCode(), $e);
+            throw new EntryNotFoundException($id, is_int($e->getCode()) ? $e->getCode() : 0, $e);
         }
     }
 
@@ -1006,6 +1022,10 @@ class Container implements ArrayAccess, ContainerContract
 
         if ($parameter->isDefaultValueAvailable()) {
             return $parameter->getDefaultValue();
+        }
+
+        if ($parameter->isVariadic()) {
+            return [];
         }
 
         $this->unresolvablePrimitive($parameter);
