@@ -37,8 +37,9 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/student/all', 'StudentAll')->name('student.all');
     Route::get('/student/add', 'StudentAdd')->name('student.add');
     Route::post('/student/store', 'StudentStore')->name('student.store');
-
-
+    Route::get('/student/edit/{id}', 'StudentEdit')->name('student.edit');
+    Route::post('/student/update', 'StudentUpdate')->name('student.update');
+    Route::get('/student/delete{id}', 'StudentDelete')->name('student.delete');
 });
 
 Route::controller(SubjectController::class)->group(function () {

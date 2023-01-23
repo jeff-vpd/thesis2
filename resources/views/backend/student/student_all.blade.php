@@ -16,7 +16,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <a href="{{ route('student.add')}}" class="btn btn-dark btn-rounded waves-effect waves-light"
+                            <a href="{{ route('student.add') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
                                 style="float: right">Add Student</a> <br> <br>
 
                             <h4 class="card-title">Student All Data </h4>
@@ -28,7 +28,6 @@
                                         <th>Image</th>
                                         <th width="20%">Name</th>
                                         <th>Grade</th>
-                                        <th>Added By</th>
                                         <th>Action</th>
                                 </thead>
                                 <tbody>
@@ -36,16 +35,17 @@
                                         <tr>
                                             <td> {{ $item->id }} </td>
                                             <td> <img src="{{ asset($item->student_image) }}"
-                                                style="width: 60px; height: 50px;"> </td>
+                                                    style="width: 60px; height: 50px;"> </td>
                                             <td> {{ $item->name }} </td>
                                             <td> {{ $item->grade }} </td>
-                                            <td> {{ $item->id }} </td>
                                             <td>
-                                                <a href="" class="btn btn-info sm" title="Edit Data"> <i
-                                                        class="fas fa-edit"></i>
+                                                <a href="{{ route('student.edit', $item->id) }}" class="btn btn-info sm"
+                                                    title="Edit Data"> <i class="fas fa-edit"></i>
                                                 </a>
-                                                <a href="" class="btn btn-danger sm" title="Delete Data"
-                                                    id="delete"> <i class="fas fa-trash-alt"></i> </a>
+
+                                                <a href="{{ route('student.delete', $item->id) }}" class="btn btn-danger sm"
+                                                    title="Delete Data" id="delete"> <i class="fas fa-trash-alt"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
