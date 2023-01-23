@@ -16,7 +16,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <a href="" class="btn btn-dark btn-rounded waves-effect waves-light"
+                            <a href="{{ route('subject.add')}}" class="btn btn-dark btn-rounded waves-effect waves-light"
                                 style="float: right">Add Subject</a> <br> <br>
 
                             <h4 class="card-title">Subject All Data </h4>
@@ -29,22 +29,21 @@
                                         <th width="20%">Description</th>
                                         <th>Max Capacity</th>
                                         <th>Requirements</th>
-                                        <th>Added By</th>
                                         <th>Action</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($subject as $key => $item)
                                         <tr>
-                                            <td> {{ $item->id }} </td>
-                                            <td> {{ $item->id }} </td>
-                                            <td> {{ $item->id }} </td>
-                                            <td> {{ $item->id }} </td>
-                                            <td> {{ $item->id }} </td>
+                                            <td> {{ $key+ 1 }} </td>
+                                            <td> {{ $item->name }} </td>
+                                            <td> {{ $item->description }} </td>
+                                            <td> {{ $item->max_capacity }} </td>
+                                            <td> {{ $item->requirements }} </td>
                                             <td>
-                                                <a href="" class="btn btn-info sm" title="Edit Data"> <i
+                                                <a href="{{ route('subject.edit', $item->id)}}" class="btn btn-info sm" title="Edit Data"> <i
                                                         class="fas fa-edit"></i>
                                                 </a>
-                                                <a href="" class="btn btn-danger sm" title="Delete Data"
+                                                <a href="{{ route('subject.delete', $item->id) }}" class="btn btn-danger sm" title="Delete Data"
                                                     id="delete"> <i class="fas fa-trash-alt"></i> </a>
                                             </td>
                                         </tr>

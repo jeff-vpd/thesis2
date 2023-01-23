@@ -48,6 +48,12 @@ Route::controller(SubjectController::class)->group(function () {
 
 Route::controller(SubjectController::class)->group(function () {
     Route::get('/subject/all', 'SubjectAll')->name('subject.all');
+    Route::get('/subject/add', 'SubjectAdd')->name('subject.add');
+    Route::post('/subject/store', 'subjectStore')->name('subject.store');
+    Route::get('/subject/edit/{id}', 'SubjectEdit')->name('subject.edit');
+    Route::post('/subject/update', 'SubjectUpdate')->name('subject.update');
+    Route::get('/subject/delete{id}', 'SubjectDelete')->name('subject.delete');
+
 });
 
 
