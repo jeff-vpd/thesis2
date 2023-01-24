@@ -5,6 +5,7 @@ use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\HomeworkController;
 
 
 
@@ -42,10 +43,7 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/student/delete{id}', 'StudentDelete')->name('student.delete');
 });
 
-Route::controller(SubjectController::class)->group(function () {
-    Route::get('/subject/all', 'SubjectAll')->name('subject.all');
-});
-
+ // Subject All Route
 Route::controller(SubjectController::class)->group(function () {
     Route::get('/subject/all', 'SubjectAll')->name('subject.all');
     Route::get('/subject/add', 'SubjectAdd')->name('subject.add');
@@ -53,15 +51,12 @@ Route::controller(SubjectController::class)->group(function () {
     Route::get('/subject/edit/{id}', 'SubjectEdit')->name('subject.edit');
     Route::post('/subject/update', 'SubjectUpdate')->name('subject.update');
     Route::get('/subject/delete{id}', 'SubjectDelete')->name('subject.delete');
-
 });
 
+Route::controller(HomeworkController::class)->group(function () {
+    Route::get('/homework/all', 'HomeworkAll')->name('homework.all');
 
-
- 
-
-
-
+});
 
 
 Route::get('/dashboard', function () {
@@ -69,8 +64,3 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
-
-
-// Route::get('/contact', function () {
-//     return view('contact');
-// });

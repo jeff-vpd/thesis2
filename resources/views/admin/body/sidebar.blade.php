@@ -61,22 +61,22 @@
                          <span>Homework</span>
                      </a>
                      <ul class="sub-menu" aria-expanded="false">
-                         <li><a href="">Homework List</a></li>
+                         <li><a href="{{ route('homework.all') }}">Homework List</a></li>
                          <li><a href="email-inbox.html">Add Homework</a></li>
 
                      </ul>
                  </li>
                  <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect">
-                        <i class="ri-booklet-fill"></i>
-                        <span>Classroom</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="">Classroom List</a></li>
-                        <li><a href="email-inbox.html">Add Classroom</a></li>
+                     <a href="javascript: void(0);" class="has-arrow waves-effect">
+                         <i class="ri-booklet-fill"></i>
+                         <span>Classroom</span>
+                     </a>
+                     <ul class="sub-menu" aria-expanded="false">
+                         <li><a href="">Classroom List</a></li>
+                         <li><a href="email-inbox.html">Add Classroom</a></li>
 
-                    </ul>
-                </li>
+                     </ul>
+                 </li>
 
 
                  <li class="menu-title">Pages</li>
