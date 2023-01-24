@@ -20,7 +20,9 @@ class StudentController extends Controller
     {
         return view('backend.student.student_add');
     }
-
+public function sample(){
+    return view('backend.student.sample');
+}
     public function StudentStore(Request $request)
     {
         $image = $request->file('student_image');
