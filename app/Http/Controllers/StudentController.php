@@ -15,6 +15,9 @@ class StudentController extends Controller
         $student = Student::latest()->get();
         return view('backend.student.student_all', compact('student'));
     }
+    public function dashboard(){
+        return view('backend.student.student_dashboard');
+    }
 
     public function StudentAdd()
     {
