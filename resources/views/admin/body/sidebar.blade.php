@@ -66,7 +66,7 @@
 
                      </ul>
                  </li>
-                 <li>
+                 <li>    
                      <a href="javascript: void(0);" class="has-arrow waves-effect">
                          <i class="ri-booklet-fill"></i>
                          <span>Classroom</span>

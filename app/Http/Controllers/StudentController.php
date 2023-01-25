@@ -7,7 +7,6 @@ use Auth;
 use Illuminate\Support\Carbon;
 use Image;
 
-
 class StudentController extends Controller
 {
     public function StudentAll()
@@ -20,9 +19,10 @@ class StudentController extends Controller
     {
         return view('backend.student.student_add');
     }
-public function sample(){
-    return view('backend.student.sample');
-}
+    public function sample()
+    {
+        return view('backend.student.sample');
+    }
     public function StudentStore(Request $request)
     {
         $image = $request->file('student_image');
@@ -51,10 +51,13 @@ public function sample(){
             'alert-type' => 'success',
         ];
 
-        return redirect()->route('student.all')->with($notification);
+        return redirect()
+            ->route('student.all')
+            ->with($notification);
     } // End method
 
-    public function StudentEdit($id){
+    public function StudentEdit($id)
+    {
         $student = Student::findOrFail($id);
         return view('backend.student.student_edit', compact('student'));
     } // End method
@@ -73,7 +76,6 @@ public function sample(){
             $save_url = 'upload/student/' . $name_gen;
 
             Student::findOrFail($student_id)->update([
-
                 'name' => $request->name,
                 'grade' => $request->grade,
                 'guardian_name' => $request->guardian_name,
@@ -102,7 +104,6 @@ public function sample(){
                 'address' => $request->address,
                 'updated_by' => Auth::user()->id,
                 'updated_at' => Carbon::now(),
-
             ]);
 
             $notification = [
