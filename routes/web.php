@@ -37,6 +37,7 @@ Route::controller(AdminController::class)->group(function () {
  Route::controller(StudentController::class)->group(function () {
     Route::get('/student/all', 'StudentAll')->name('student.all');
     Route::get('/student/add', 'StudentAdd')->name('student.add');
+    Route::get('/student/dashboard', 'dashboard')->name('student.dashboard');
     Route::post('/student/store', 'StudentStore')->name('student.store');
     Route::get('/student/edit/{id}', 'StudentEdit')->name('student.edit');
     Route::post('/student/update', 'StudentUpdate')->name('student.update');
