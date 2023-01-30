@@ -42,6 +42,7 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/student/edit/{id}', 'StudentEdit')->name('student.edit');
     Route::post('/student/update', 'StudentUpdate')->name('student.update');
     Route::get('/student/delete{id}', 'StudentDelete')->name('student.delete');
+    Route::get('/student/homework', 'StudentHomework')->name('student.homework');
 
 });
 
