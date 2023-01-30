@@ -5,20 +5,18 @@
         rel="stylesheet">
     <link rel="stylesheet" href="/css/student/style.student.css">
     {{-- dropzone --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.min.css"
-        integrity="sha512-V2vG5iKz92OZO8Wd9A0vDpuzC7hP5Ax5R0d5Es5H30A16A5M0o8gxqX26tSQHm7VQeo/lgcB3q/4p4u7Vm4RJg=="
-        crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.min.js"
-        integrity="sha512-VHUAKOI4lZxZbabIz9ZLh+F1zrfkKLW8bdPjEuU6oJeTZOuU6KL2Q9uYKjL/lO+iN8BlvIfE/KM5tmfwwIWd8g=="
-        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js"></script>
 
     <div class="page-content">
         <div class="container-fluid">
             <div class="container text-center">
-                <div class="mb-5 shadow p-3 mb-5 bg-body-tertiary bg-info rounded">
-                    <h1 class="text-white">Homework Name</h1>
-                </div>
+                
                 <div class="container px-4 text-center">
+                    <div class="mb-5 shadow p-3 mb-5 bg-body-tertiary bg-info rounded">
+                        <h1 class="text-white">Homework Name</h1>
+                    </div>
                     <div class="row gx-3">
                         <div class="col shadow p-3 mb-5 bg-body-tertiary rounded"
                             style="background-color: aliceblue;margin:20px;">
@@ -27,7 +25,8 @@
                                     <h1>Homework Description</h1>
                                 </div>
                                 <div class="content">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                    <p style="font-size: 18px;">Lorem Ipsum is simply dummy text of the printing and
+                                        typesetting industry. Lorem
                                         Ipsum has been the industry's standard dummy text ever since the 1500s, when an
                                         unknown printer took a galley of type and scrambled it to make a type specimen book.
                                         It has survived not only five centuries, but also the leap into electronic
@@ -38,11 +37,34 @@
                                     <iframe width="90%" height="615" src="https://www.youtube.com/embed/tgbNymZ7vqY">
                                     </iframe>
                                 </div>
-                                <div class="form-control">
-                                    <!-- Example of a form that Dropzone can take over -->
-                                    <form action="/target" class="dropzone"></form>
+                                <div class="form-control ">
+                                    <div class="container mt-5">
+                                        <form action="{{ route('homework.store') }}" method="post"
+                                            enctype="multipart/form-data">
+                                            <div class="mb-5 shadow p-3 bg-body-tertiary bg-info rounded" style="width:93%;margin:auto">
+                                                <h2 class="text-white">Upload File</h2>
+                                            </div>
+                                            
+                                            @csrf
+                                            <div class="custom-file">
+                                                <div class="row">
+
+                                                    <div class="col"><label class="custom-file-label" for="chooseFile" style="font-size:30px"><i
+                                                                class="fa-solid fa-cloud-arrow-up"></i> Select file</label>
+                                                    </div>
+                                                </div>
+                                                <div style="width:50%; margin:auto;">
+                                                    <input class="form-control form-control-lg custom-file-input"
+                                                        id="chooseFile" type="file">
+                                                </div>
+                                            </div>
+                                            <button type="submit" name="submit" class="btn btn-primary btn-block mt-4" style="font-size: 20px;">
+                                                Submit Homework
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
-                                <button class="button-17" role="button">Click</button>
+
                             </div>
                         </div>
 
