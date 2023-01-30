@@ -40,6 +40,7 @@ return array(
     'App\\Models\\Subject' => $baseDir . '/app/Models/Subject.php',
     'App\\Models\\Teacher' => $baseDir . '/app/Models/Teacher.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
+    'App\\Models\\file' => $baseDir . '/app/Models/file.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',
