@@ -12,7 +12,8 @@
                 </div>
                 <div class="container px-4 text-center">
                     <div class="row gx-3">
-                        <div class="col-5 shadow p-3 mb-5 bg-body-tertiary rounded" style="background-color: aliceblue;margin:20px;">
+                        <div class="col-5 shadow p-3 mb-5 bg-body-tertiary rounded"
+                            style="background-color: aliceblue;margin:20px;">
                             <div class="" style="padding:20px;">
                                 <div class="three text-start">
                                     <h1>Homework One</h1>
@@ -26,12 +27,14 @@
                                         the release of Letraset sheets containing Lorem Ipsum passages, and more recently
                                         with desktop publishing software like Aldus PageMaker including versions of Lorem
                                         Ipsum.</p>
-                                        <a href="">This is a link</a>
+                                    <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                                    </iframe>
                                 </div>
                                 <button class="button-17" role="button">Click</button>
                             </div>
                         </div>
-                        <div class="col-5 shadow p-3 mb-5 bg-body-tertiary rounded" style="background-color: aliceblue; margin:20px;">
+                        <div class="col-5 shadow p-3 mb-5 bg-body-tertiary rounded"
+                            style="background-color: aliceblue; margin:20px;">
                             <div class="" style="padding:20px;">
                                 <div class="three text-start">
                                     <h1>Homework Two</h1>
@@ -49,7 +52,8 @@
                                 <button class="button-17" role="button">Click</button>
                             </div>
                         </div>
-                        <div class="col-5 shadow p-3 mb-5 bg-body-tertiary rounded" style="background-color: aliceblue; margin:20px;">
+                        <div class="col-5 shadow p-3 mb-5 bg-body-tertiary rounded"
+                            style="background-color: aliceblue; margin:20px;">
                             <div class="" style="padding:20px;">
                                 <div class="three text-start">
                                     <h1>Homework Two</h1>

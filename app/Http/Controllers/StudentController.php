@@ -135,4 +135,8 @@ public function sample(){
             ->back()
             ->with($notification);
     } // End method
+     
+    public function StudentHomework(){
+        return view('backend.student.homework');
+    }
 }
