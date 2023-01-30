@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('homework', function (Blueprint $table) {
             $table->id();
-            $table->integer('student_id');
             $table->integer('subject_id');
             $table->integer('teacher_id');
             $table->string('video_link');
             $table->string('description');
+            $table->string('file');
             $table->string('rating');
             $table->timestamps();
         });

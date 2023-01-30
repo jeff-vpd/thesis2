@@ -30,7 +30,7 @@
                          <span>Teachers</span>
                      </a>
                      <ul class="sub-menu" aria-expanded="false">
-                         <li><a href="{{ route('student.all') }}">All Teachers</a></li>
+                         <li><a href="{{ route('teacher.all') }}">All Teachers</a></li>
                          <li><a href="email-read.html">Assign Subject</a></li>
                      </ul>
                  </li>

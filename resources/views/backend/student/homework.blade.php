@@ -5,12 +5,9 @@
         rel="stylesheet">
     <link rel="stylesheet" href="/css/student/style.student.css">
     {{-- dropzone --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.min.css"
-        integrity="sha512-V2vG5iKz92OZO8Wd9A0vDpuzC7hP5Ax5R0d5Es5H30A16A5M0o8gxqX26tSQHm7VQeo/lgcB3q/4p4u7Vm4RJg=="
-        crossorigin="anonymous" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.0/dropzone.min.js"
-        integrity="sha512-VHUAKOI4lZxZbabIz9ZLh+F1zrfkKLW8bdPjEuU6oJeTZOuU6KL2Q9uYKjL/lO+iN8BlvIfE/KM5tmfwwIWd8g=="
-        crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/dropzone.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/dropzone.min.js"></script>
+
 
     <div class="page-content">
         <div class="container-fluid">
@@ -38,11 +35,14 @@
                                     <iframe width="90%" height="615" src="https://www.youtube.com/embed/tgbNymZ7vqY">
                                     </iframe>
                                 </div>
-                                <div class="form-control">
-                                    <!-- Example of a form that Dropzone can take over -->
-                                    <form action="/target" class="dropzone"></form>
-                                </div>
-                                <button class="button-17" role="button">Click</button>
+
+
+                                <form action="{{ route('upload-files') }}" method="post" enctype="multipart/form-data"
+                                    class="dropzone">
+                                    @csrf
+                                    <button class="btn btn-primary" type="submit">Add</button>
+
+                                </form>
                             </div>
                         </div>
 

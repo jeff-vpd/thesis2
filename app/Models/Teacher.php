@@ -10,4 +10,8 @@ class Teacher extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public function subject(){
+        return $this->HasOne(Subject::class, 'id', 'subject_id');
+    }
+
 }

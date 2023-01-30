@@ -6,8 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\HomeworkController;
-
-
+use App\Http\Controllers\TeacherController;
 
 
 Route::get('/', function () {
@@ -46,6 +45,21 @@ Route::controller(AdminController::class)->group(function () {
 
 });
 
+ // Teacher All Route
+Route::controller(TeacherController::class)->group(function () {
+    Route::get('/teacher/all', 'TeacherAll')->name('teacher.all');
+    Route::get('/teacher/add', 'TeacherAdd')->name('teacher.add');
+    Route::post('/teacher/store', 'TeacherStore')->name('teacher.store');
+    Route::get('/teacher/edit/{id}', 'TeacherEdit')->name('teacher.edit');
+    Route::post('/teacher/update', 'TeacherUpdate')->name('teacher.update');
+    Route::get('/teacher/delete{id}', 'TeacherDelete')->name('teacher.delete');
+
+
+
+
+});
+
+
  // Subject All Route
 Route::controller(SubjectController::class)->group(function () {
     Route::get('/subject/all', 'SubjectAll')->name('subject.all');
@@ -58,6 +72,8 @@ Route::controller(SubjectController::class)->group(function () {
 
 Route::controller(HomeworkController::class)->group(function () {
     Route::get('/homework/all', 'HomeworkAll')->name('homework.all');
+    Route::get('/homework/store', 'HomeworkStore')->name('homework.store');
+
 
 });
 

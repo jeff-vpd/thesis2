@@ -8,13 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesdesign" name="author" />
+    
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('backend/assets/images/favicon.ico') }}">
 
+
     <!-- jquery.vectormap css -->
     <link href="{{ asset('backend/assets/libs/admin-resources/jquery.vectormap/jquery-jvectormap-1.2.2.css') }}"
         rel="stylesheet" type="text/css" />
+
+    {{-- Dropzone --}}
+    <link href="{{ asset('backend/assets/libs/dropzone/min/dropzone.min.css') }}" rel="stylesheet" >
 
     <!-- DataTables -->
     <link href="{{ asset('backend/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}"
@@ -23,10 +28,10 @@
     <!-- Responsive datatable examples -->
     <link href="{{ asset('backend/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css') }}"
         rel="stylesheet" type="text/css" />
-        {{-- font awesome and boxicons --}}
-        <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js"></script>
-        <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    {{-- font awesome and boxicons --}}
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
     <!-- Bootstrap Css -->
     <link href="{{ asset('backend/assets/css/bootstrap.min.css') }}" id="bootstrap-style" rel="stylesheet"
@@ -35,6 +40,7 @@
     <link href="{{ asset('backend/assets/css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- App Css-->
     <link href="{{ asset('backend/assets/css/app.min.css') }}" id="app-style" rel="stylesheet" type="text/css" />
+    
 
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
 
@@ -148,6 +154,11 @@
 
     <!-- Datatable init js -->
     <script src="{{ asset('backend/assets/js/pages/datatables.init.js') }}"></script>
+
+    <!-- Plugins js -->
+    <script src="assets/libs/dropzone/min/dropzone.min.js"></script>
+
+
 
 </body>
 
