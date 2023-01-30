@@ -5,6 +5,7 @@ use App\Http\Controllers\Demo\DemoController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SubjectController;
+use App\Http\Controllers\FileUpload;
 
 
 
@@ -38,15 +39,20 @@ Route::controller(AdminController::class)->group(function () {
     Route::get('/student/add', 'StudentAdd')->name('student.add');
     Route::get('/student/dashboard', 'dashboard')->name('student.dashboard');
     Route::post('/student/store', 'StudentStore')->name('student.store');
+
     Route::get('/student/edit/{id}', 'StudentEdit')->name('student.edit');
     Route::post('/student/update', 'StudentUpdate')->name('student.update');
     Route::get('/student/delete{id}', 'StudentDelete')->name('student.delete');
     Route::get('/student/homework', 'StudentHomework')->name('student.homework');
-
+    Route::post('/student/homework/store', 'HomeworkStore')->name('homework.store');
 });
 
 Route::controller(SubjectController::class)->group(function () {
     Route::get('/subject/all', 'SubjectAll')->name('subject.all');
+});
+
+Route::controller(FileUpload::class)->group(function () {
+    Route::post('/homework/store', 'fileUpload')->name('homework.store');
 });
 
 Route::controller(SubjectController::class)->group(function () {

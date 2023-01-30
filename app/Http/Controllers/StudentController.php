@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\Homework;
 use Auth;
 use Illuminate\Support\Carbon;
 use Image;
@@ -137,6 +138,21 @@ public function sample(){
     } // End method
      
     public function StudentHomework(){
+        return view('backend.student.homework');
+    }
+    public function HomeworkStore(Request $request){
+
+        $image = $request->file('file');
+        $imageName = $image->getClientOriginalName();
+        $image->move(public_path('file'),$imageName);
+
+        Homework::create([
+            'user_id ' => 1,
+            'title' => 1,
+            'description' => $imageName,
+            'content' => 1,
+            'due_date' => '2023-01-28',
+        ]);
         return view('backend.student.homework');
     }
 }
