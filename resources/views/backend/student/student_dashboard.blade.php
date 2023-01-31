@@ -8,69 +8,32 @@
         <div class="container-fluid">
             <div class="container text-center">
                 <div class="mb-5 shadow p-3 mb-5 bg-body-tertiary bg-info rounded">
-                    <h1 class="text-white">Student Dashboard</h1>
+                    <h1 class="text-white">My Homework</h1>
                 </div>
                 <div class="container px-4 text-center">
                     <div class="row gx-3">
-                        <div class="col-5 shadow p-3 mb-5 bg-body-tertiary rounded"
-                            style="background-color: aliceblue;margin:20px;">
-                            <div class="" style="padding:20px;">
-                                <div class="three text-start">
-                                    <h1>Homework One</h1>
+                        @foreach ($homework as $item)
+                            <div class="col-5 shadow p-3 mb-5 bg-body-tertiary rounded"
+                                style="background-color: aliceblue;margin:20px;">
+                                <div class="" style="padding:20px;">
+                                    <div class="three text-start">
+                                        <h1>{{ $item->category }}</h1>
+                                    </div>
+                                    <div class="content" style="display:flex;">
+                                        {!! $item->description !!}
+                                    </div>
+                                    {{-- <iframe width="100%" height="315"
+                                            src="{{$item->video_link}}">
+                                    </iframe> --}}
+                                    <div class="mb-5">
+                                        <a href="{{ $item->video_link }}">{{ $item->video_link }}</a>
+                                    </div> 
+                                    <div>
+                                        <button class="button-17" role="button">Click</button>
+                                    </div>
                                 </div>
-                                <div class="content">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        It has survived not only five centuries, but also the leap into electronic
-                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                        the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                        with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                        Ipsum.</p>
-                                    <iframe width="350" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-                                    </iframe>
-                                </div>
-                                <button class="button-17" role="button">Click</button>
                             </div>
-                        </div>
-                        <div class="col-5 shadow p-3 mb-5 bg-body-tertiary rounded"
-                            style="background-color: aliceblue; margin:20px;">
-                            <div class="" style="padding:20px;">
-                                <div class="three text-start">
-                                    <h1>Homework Two</h1>
-                                </div>
-                                <div class="content">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        It has survived not only five centuries, but also the leap into electronic
-                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                        the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                        with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                        Ipsum.</p>
-                                </div>
-                                <button class="button-17" role="button">Click</button>
-                            </div>
-                        </div>
-                        <div class="col-5 shadow p-3 mb-5 bg-body-tertiary rounded"
-                            style="background-color: aliceblue; margin:20px;">
-                            <div class="" style="padding:20px;">
-                                <div class="three text-start">
-                                    <h1>Homework Two</h1>
-                                </div>
-                                <div class="content">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        It has survived not only five centuries, but also the leap into electronic
-                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                        the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                        with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                        Ipsum.</p>
-                                </div>
-                                <button class="button-17" role="button">Click</button>
-                            </div>
-                        </div>
+                        @endforeach
 
                     </div>
                 </div>
