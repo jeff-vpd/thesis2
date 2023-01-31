@@ -27,7 +27,7 @@
                                         the release of Letraset sheets containing Lorem Ipsum passages, and more recently
                                         with desktop publishing software like Aldus PageMaker including versions of Lorem
                                         Ipsum.</p>
-                                    <iframe width="420" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+                                    <iframe width="100%" height="200vh" src="https://www.youtube.com/embed/tgbNymZ7vqY">
                                     </iframe>
                                 </div>
                                 <button class="button-17" role="button">Click</button>
