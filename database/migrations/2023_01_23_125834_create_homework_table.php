@@ -15,12 +15,15 @@ return new class extends Migration
     {
         Schema::create('homework', function (Blueprint $table) {
             $table->id();
-            $table->integer('subject_id');
-            $table->integer('teacher_id');
-            $table->string('video_link');
-            $table->string('description');
-            $table->string('file');
-            $table->string('rating');
+            $table->integer('subject_id')->nullable();
+            $table->integer('teacher_id')->nullable();
+            $table->string('video_link')->nullable();
+            $table->string('category')->nullable();
+            $table->text('description')->nullable();
+            $table->string('file')->nullable();
+            $table->string('rating')->nullable();
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
             $table->timestamps();
         });
     }

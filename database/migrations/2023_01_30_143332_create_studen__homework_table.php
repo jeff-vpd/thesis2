@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('rating')->nullable();
             $table->string('comment')->nullable();;
             $table->string('file');
+            $table->integer('created_by')->nullable();
+            $table->integer('updated_by')->nullable();
             $table->timestamps();
         });
     }
