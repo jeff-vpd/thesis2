@@ -141,19 +141,21 @@ class StudentController extends Controller
     public function StudentHomework(){
         return view('backend.student.homework');
     }
-    public function HomeworkStore(Request $request){
+//     public function HomeworkStore(Request $request){
 
-        $image = $request->file('file');
-        $imageName = $image->getClientOriginalName();
-        $image->move(public_path('file'),$imageName);
+//         $image = $request->file('file');
+//         $imageName = $image->getClientOriginalName();
+//         $image->move(public_path('file'),$imageName);
 
-        Homework::create([
-            'user_id ' => 1,
-            'title' => 1,
-            'description' => $imageName,
-            'content' => 1,
-            'due_date' => '2023-01-28',
-        ]);
-        return view('backend.student.homework');
-    }
+//         Homework::create([
+//             'user_id ' => 1,
+//             'title' => 1,
+//             'description' => $imageName,
+//             'content' => 1,
+//             'due_date' => '2023-01-28',
+//         ]);
+//         return view('backend.student.homework');
+//     }
+// }
+
 }
