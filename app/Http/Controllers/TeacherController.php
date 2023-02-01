@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Teacher;
 use App\Models\Subject;
+use App\Models\StudentHomework;
+use App\Models\User;
 
 use Auth;
 use Illuminate\Support\Carbon;
@@ -85,5 +87,10 @@ class TeacherController extends Controller
             ->back()
             ->with($notification);
     } // End method
+    public function SubmittedHomework(){
+        $student_homework = StudentHomework::with('subject','student','teacher')->get();
+
+        return view('backend.teacher.student_homework_all', compact('student_homework'));
+    }
 
 }

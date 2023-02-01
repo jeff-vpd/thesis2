@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Homework;
 use App\Models\Subject;
 use App\Models\Teacher;
+use Illuminate\Support\Facades\Storage;
 
 use Auth;
 use Illuminate\Support\Carbon;
@@ -14,7 +15,7 @@ class HomeworkController extends Controller
 {
     public function HomeworkAll()
     {
-        $homework = Homework::with('subject', 'teacher')->latest()->get();
+        $homework = Homework::with('subject', 'user')->latest()->get();
         return view('backend.homework.homework_all', compact('homework'));
     }
 
@@ -34,12 +35,13 @@ class HomeworkController extends Controller
             if($request->file()) {
                 $fileName = time().'_'.$request->file->getClientOriginalName();
                 $filePath = $request->file('file')->storeAs('file', $fileName, 'public');
-                $file_path = '/storage/' . $filePath;
+                $file_path = '/upload/' . $filePath;
 
             }
+            
             Homework::insert([
                 'subject_id' => $request->subject_id,
-                'teacher_id' => $request->teacher_id,
+                'teacher_id' => Auth::user()->id,
                 'video_link' => $request->video_link,
                 'category' => $request->category,
                 'description' => $request->description,
@@ -48,7 +50,6 @@ class HomeworkController extends Controller
                 'created_at' => Carbon::now(),
 
             ]);
-
             $notification = [
                 'message' => 'Homework added Successfully',
                 'alert-type' => 'success',

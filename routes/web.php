@@ -9,6 +9,7 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\HomeworkController;
 use App\Http\Controllers\FileUpload;
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -23,7 +24,7 @@ Route::controller(DemoController::class)->group(function () {
 Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
         // Admin All Route
         Route::controller(AdminController::class)->group(function () {
-            Route::get('/admin/logout', 'destroy')->name('admin.logout');
+            
             Route::get('/admin/profile', 'Profile')->name('admin.profile');
             Route::get('/edit/profile', 'EditProfile')->name('edit.profile');
             Route::post('/store/profile', 'StoreProfile')->name('store.profile');
@@ -40,6 +41,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
             Route::get('/teacher/edit/{id}', 'TeacherEdit')->name('teacher.edit');
             Route::post('/teacher/update', 'TeacherUpdate')->name('teacher.update');
             Route::get('/teacher/delete{id}', 'TeacherDelete')->name('teacher.delete');
+            Route::get('/homework/submitted', 'SubmittedHomework')->name('homework.submitted');
         });
     });
 
@@ -75,7 +77,7 @@ Route::controller(HomeworkController::class)->group(function () {
     Route::get('/homework/add', 'HomeworkAdd')->name('homework.add');
     Route::post('/homework/stores', 'HomeworkStore')->name('homework.stores');
 });
-
+Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
 Route::get('/dashboard', function () {
     return view('admin.index');
 })
