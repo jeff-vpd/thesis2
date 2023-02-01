@@ -41,7 +41,6 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
             Route::get('/teacher/edit/{id}', 'TeacherEdit')->name('teacher.edit');
             Route::post('/teacher/update', 'TeacherUpdate')->name('teacher.update');
             Route::get('/teacher/delete{id}', 'TeacherDelete')->name('teacher.delete');
-            Route::get('/homework/submitted', 'SubmittedHomework')->name('homework.submitted');
         });
     });
 
@@ -49,7 +48,7 @@ Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
 Route::controller(StudentController::class)->group(function () {
     Route::get('/student/all', 'StudentAll')->name('student.all');
     Route::get('/student/add', 'StudentAdd')->name('student.add');
-    Route::get('/student/dashboard', 'dashboard')->name('student.dashboard');
+    // Route::get('/student/dashboard', 'dashboard')->name('student.dashboard');
     Route::post('/student/store', 'StudentStore')->name('student.store');
 
     Route::get('/student/edit/{id}', 'StudentEdit')->name('student.edit');
@@ -76,8 +75,15 @@ Route::controller(HomeworkController::class)->group(function () {
     Route::get('/homework/all', 'HomeworkAll')->name('homework.all');
     Route::get('/homework/add', 'HomeworkAdd')->name('homework.add');
     Route::post('/homework/stores', 'HomeworkStore')->name('homework.stores');
+    Route::get('/homework/submitted', 'HomeworkSubmitted')->name('homework.submitted');
+    Route::get('/homework/review{id}', 'HomeworkReview')->name('homework.review');
+
+
 });
 Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
+Route::get('/student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
+
+
 Route::get('/dashboard', function () {
     return view('admin.index');
 })

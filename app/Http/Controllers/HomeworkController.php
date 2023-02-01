@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Homework;
 use App\Models\Subject;
 use App\Models\Teacher;
+use App\Models\StudentHomeWork;
 use Illuminate\Support\Facades\Storage;
 
 use Auth;
@@ -59,6 +60,21 @@ class HomeworkController extends Controller
                 ->route('homework.all')
                 ->with($notification);
             
+    } // End Method
+
+    public function HomeworkSubmitted()
+    {
+        $student_homework = StudentHomework::with('subject', )
+            ->latest()
+            ->get();
+        return view('backend.homework.homework_submitted', compact('student_homework'));
     }
+
+    public function HomeworkReview($id)
+    {
+        $student_homework = StudentHomework::findOrFail($id);
+        return view('backend.homework.homework_review', compact('student_homework'));
+    } // End method
+
 
 }
