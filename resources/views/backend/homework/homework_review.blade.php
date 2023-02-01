@@ -1,6 +1,8 @@
 @extends('admin.admin_master')
 @section('admin')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <div class="page-content">
         <div class="container-fluid">
             <div class="row">
@@ -9,26 +11,52 @@
                         <div class="card-body">
                             <h4 class="card-title">Review Student Page </h4><br><br>
 
-                            <form method="post" action="{{ route('student.update')}}" id="myForm" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('student.update') }}" id="myForm"
+                                enctype="multipart/form-data">
                                 @csrf
-                                <input type="hidden" name="id" value="{{ $student_homework->id}}">
+                                <input type="hidden" name="id" value="{{ $student_homework->id }}">
                                 <!-- end row -->
                                 <div class="row mb-3">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Grade</label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Submitted File</label>
                                     <div class="form-group col-sm-10">
-                                        <select name="grade" id="grade" class="form-select">
-                                            <option  value="">Select Grade</option>
-                                            <option value="1">Grade 1</option>
-                                            <option value="2">Grade 2</option>
-                                            <option value="3">Grade 3</option>
-                                            <option value="4">Grade 4</option>
-                                            <option value="5">Grade 5</option>
-                                            <option value="6">Grade 6</option>
-                                        </select>
+                                        <button class="btn btn-sm btn-primary"><a
+                                            href="\storage\file\{{ $student_homework->file }}" download
+                                            style="color: rgb(255, 255, 255)">Download</a></button> <span> <em>{{ $student_homework->file }}</em> </span>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Student Name</label>
+                                    <div class="form-group col-sm-10">
+                                        <input name="name" class="form-control" type="text" value="{{$student_homework->student->name}}" readonly>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Category</label>
+                                    <div class="form-group col-sm-10">
+                                        <input name="name" class="form-control" value="Category" type="text" readonly>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Rating</label>
+                                    <div class="form-group col-sm-10">
+                                        <input name="name" class="form-control" type="text">
+                                    </div>
+                                </div>
+                                <div class="row mb-5">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Comment</label>
+                                    <div class="form-group col-sm-10">
+                                        <!-- Create the editor container -->
+                                        <div id="descriptionQuill">
+                                            <p>White your Comment Here</p>
+                                            <p><br></p>
+                                        </div>
+                                        <textarea name="description" id="description" cols="30" rows="10" style="display: none"></textarea>
                                     </div>
                                 </div>
                                 <!-- end row -->
-                                <input type="submit" class="btn btn-info waves-effect waves-light" value="Update Student">
+                                <div class="pt-3">
+                                <input type="submit" class="btn btn-info waves-effect waves-light float-end" value="Submit Rating and Comment">
+                            </div>
                             </form>
                         </div>
                     </div>
@@ -36,7 +64,14 @@
             </div>
         </div>
     </div>
-
+    <script>
+        var quill = new Quill('#descriptionQuill', {
+            theme: 'snow'
+        });
+        $("#myForm").on("submit", function() {
+            $("#description").val($("#descriptionQuill .ql-editor").html());
+        });
+    </script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#myForm').validate({

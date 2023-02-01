@@ -82,6 +82,7 @@ Route::controller(HomeworkController::class)->group(function () {
 });
 Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
 Route::get('/student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
+Route::get('/student/myhomeworks', [StudentController::class, 'Myhomeworks'])->name('student.myhomeworks');
 
 
 Route::get('/dashboard', function () {

@@ -175,5 +175,13 @@ class StudentController extends Controller
         return redirect()
             ->route('student.all')
             ->with($notification);
+    }//End Method
+
+    public function Myhomeworks(){
+        $id = Auth::User()->id;
+
+        $homework = StudentHomework::where('student_id', $id)->get();
+        
+        return view('backend.student.my_homeworks',compact('homework'));
     }
 }

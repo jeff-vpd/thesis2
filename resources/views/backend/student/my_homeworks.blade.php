@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Homework All</h4>
+                        <h4 class="mb-sm-0">My Homeworks</h4>
                     </div>
                 </div>
             </div>
@@ -19,39 +19,40 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            
 
-                            <h4 class="card-title">Homrwork All Data </h4>
+                            <h4 class="card-title">Homework All Data </h4>
                             <table id="datatable" class="table table-bordered dt-responsive wrap"
                                 style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                                 <thead>
                                     <tr>
                                         <th>Sl</th>
-                                        <th>Student Name</th>
-
                                         <th>Subject</th>
                                         <th>Teacher</th>
-                                        <th>rating</th>
-                                        <th>Comment</th>
+                                        <th>Category</th>
+                                        <th>Description</th>
                                         <th>File</th>
-                                        <th>Action</th>
+                                        <th>Rating</th>
+                                        <th>Comment</th>
                                 </thead>
                                 <tbody>
-                                    @foreach ($student_homework as $key => $item)
+                                    @foreach ($homework as $key => $item)
+                                    <?php
+                                    $status = $item->rating; 
+                                    if($status >= 75){
+                                        $status = '<span class="badge bg-success"><h6 style="color: white">'.$item->rating.'</h6></span>';
+                                    }else{
+                                        $status = '<span class="badge bg-danger"><h6 style="color: white">'.$item->rating.'</h6></span>';
+                                    }
+                                    ?>
                                         <tr>
-                                            <td style="width: 5%"> {{ $key + 1 }} </td>
-                                            <td style="width: 10%"> {{ $item->student->name }} </td>
-                                            <td style="width: 10%"> {{ $item->subject->name }} </td>
-                                            <td style="width: 10%"> {{ $item->teacher->name }} </td>
-                                            <td style="width: 25%"> {{$item->rating}} </td>
-                                            <td style="width: 25%"> {{$item->file}} </td>
-                                            <td style="width: 10%"> {{ $item->file }} </td>
-                                            
-                                            <td>
-                                                <a href="{{route('homework.review', $item->id)}}" class="btn btn-info sm" title="Edit Data"> <i
-                                                        class="fas fa-edit"></i>
-                                                </a>
-                                            </td>
+                                            <td>{{$key + 1}}</td>
+                                            <td>{{$item->subject->name}}</td>
+                                            <td>{{$item->teacher->name}}</td>
+                                            <td>Category to be filled</td>
+                                            <td>Description to be filled</td>
+                                            <td>{{$item->file}}</td>
+                                            <td><?= $status?></td>
+                                            <td>{{$item->comment}}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
