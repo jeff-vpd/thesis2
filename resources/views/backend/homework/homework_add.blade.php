@@ -17,8 +17,8 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Subject</label>
                                     <div class="col-sm-10">
-                                        <select name="subject_id" class="form-select" aria-label="Default select example">
-                                            <option selected="">Open this select menu</option>
+                                        <select name="subject_id" class="form-select" aria-label="Default select example" required>
+                                            <option value="">Open this select menu</option>
                                             @foreach ($subject as $sub)
                                                 <option value="{{ $sub->id }}">{{ $sub->name }}</option>
                                             @endforeach
@@ -27,13 +27,9 @@
                                 </div>
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Teacher</label>
-                                    <div class="col-sm-10">
-                                        <select name="teacher_id" class="form-select" aria-label="Default select example">
-                                            <option selected="">Open this select menu</option>
-                                            @foreach ($teacher as $teach)
-                                                <option value="{{ $teach->id }}">{{ $teach->name }}</option>
-                                            @endforeach
-                                        </select>
+                                    <div class="form-group col-sm-10">
+                                        <input  class="form-control" type="text"
+                                            value="{{Auth::user()->name}}" readonly>
                                     </div>
                                 </div>
                                 <!-- end row -->
@@ -50,7 +46,7 @@
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Category</label>
                                     <div class="form-group col-sm-10">
                                         <input name="category" class="form-control" type="text"
-                                            placeholder="Assignment #">
+                                            placeholder="Assignment #" required>
                                     </div>
                                 </div>
                                 <!-- end row -->

@@ -20,29 +20,52 @@
 
 
                     <div class="row gx-3">
+                        
                         <div class="col shadow p-3 mb-5 bg-body-tertiary rounded"
                             style="background-color: aliceblue;margin:20px;">
                             <div class="" style="padding:20px;">
                                 <div class="three text-start">
                                     <h1>{{ $homework->category }}</h1>
                                 </div>
-                                <div class="content" style="display:flex;">
+                                <div>
+                                    <h5>Homework Grade: <span class="badge bg-success">Grade</span></h5>
+
+                                </div>
+                                <div class="content" style="font-size:16px" style="width:60%; margin:auto;">
                                     {!! $homework->description !!}
                                 </div>
-                                <div class="mb-5">
-                                    <a href="{{ $homework->video_link }}">{{ $homework->video_link }}</a>
+                                <div class="row">
+                                    <div class="mb-2 col-6">
+                                        <div class="">
+                                            <h6>{{ $homework->video_link }}</h6>
+                                        </div>
+                                        <div class=""><button class="btn btn-info"><a
+                                                    href="{{ $homework->video_link }}" target="_blank"
+                                                    style="color: rgb(255, 255, 255)">Watch Here</a></button></div>
+                                    </div>
+                                    <div class="mb-5 col-6">
+                                        <div class="">
+                                            <h6>{{ $homework->file }}</h6>
+                                        </div>
+                                        <div class=""><button class="btn btn-info"><a
+                                                    href="\storage\file\{{ $homework->file }}" download
+                                                    style="color: rgb(255, 255, 255)">Download</a></button></div>
+                                    </div>
                                 </div>
+
+
                                 <div class="form-control ">
                                     <div class="container mt-5">
                                         <form action="{{ route('student.homework.store') }}" method="post"
                                             enctype="multipart/form-data">
-                                            <input type="hidden" name="subject_id" value="{{ $homework->subject_id }}">
-                                            <div class="mb-5 shadow p-3 bg-body-tertiary bg-info rounded"
+                                            <input type="text" name="subject_id" value="{{ $homework->subject_id }}">
+                                            <div class="mb-2 shadow p-1 bg-body-tertiary rounded"
                                                 style="width:93%;margin:auto">
-                                                <h2 class="text-white">Upload File</h2>
+                                                <h2 class="">Upload File</h2>
                                             </div>
 
                                             @csrf
+                                            <input type="text" name="teacher_id" value="{{$homework->teacher_id}}" readonly>
                                             <div class="custom-file">
                                                 <div class="row">
 

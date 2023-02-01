@@ -28,21 +28,21 @@
                                 <thead>
                                     <tr>
                                         <th>Sl</th>
+                                        <th>Student Name</th>
                                         <th>Subject</th>
                                         <th>Teacher</th>
-                                        <th>Category</th>
-                                        <th>Description</th>
                                         <th>File</th>
+                                        <th>Rating</th>
                                         <th>Action</th>
                                 </thead>
                                 <tbody>
-                                    @foreach ($homework as $key => $item)
+                                    @foreach ($student_homework as $key => $item)
                                         <tr>
                                             <td style="width: 5%"> {{ $key + 1 }} </td>
+                                            <td style="width: 10%"> {{ $item->student->name }} </td>
                                             <td style="width: 10%"> {{ $item->subject->name }} </td>
-                                            <td style="width: 10%"> {{ $item->user->name }} </td>
-                                            <td style="width: 20%"> {{ $item->category }} </td>
-                                            <td style="width: 25%"> {!! $item->description !!} </td>
+                                            <td style="width: 10%"> {{ $item->teacher->name }} </td>
+                                            <td style="width: 20%"> {{ $item->rating }} </td>
                                             <td style="width: 10%"> {{ $item->file }} </td>
                                             
                                             <td>

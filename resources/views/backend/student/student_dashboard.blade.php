@@ -22,13 +22,9 @@
                                     <div class="content" style="display:flex;">
                                         {!! $item->description !!}
                                     </div>
-                                    <div class="mb-5">
-                                        <a href="{{ $item->video_link }}">{{ $item->video_link }}</a>
-                                    </div>
-                                    
                                     <div>
                                         <button class="btn btn-primary" role="button"> <a
-                                                href="{{ route('student.homework', $item->id) }}" style="color: #fff"> Update</a></button>
+                                                href="{{ route('student.homework', $item->id) }}" style="color: #fff"> View Homework</a></button>
                                     </div>
                                 </div>
                             </div> {{-- End col  --}}
