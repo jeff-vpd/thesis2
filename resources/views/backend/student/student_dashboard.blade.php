@@ -9,7 +9,7 @@
             <div class="container text-center">
                 <div class="mb-5 shadow p-3 mb-5 bg-body-tertiary bg-info rounded">
                     <h1 class="text-white">My Homework</h1>
-                </div>
+                </div> {{-- End title page --}}
                 <div class="container px-4 text-center">
                     <div class="row gx-3">
                         @foreach ($homework as $item)
@@ -22,20 +22,18 @@
                                     <div class="content" style="display:flex;">
                                         {!! $item->description !!}
                                     </div>
-                                    {{-- <iframe width="100%" height="315"
-                                            src="{{$item->video_link}}">
-                                    </iframe> --}}
                                     <div class="mb-5">
                                         <a href="{{ $item->video_link }}">{{ $item->video_link }}</a>
-                                    </div> 
+                                    </div>
+                                    
                                     <div>
-                                        <button class="button-17" role="button">Click</button>
+                                        <button class="btn btn-primary" role="button"> <a
+                                                href="{{ route('student.homework', $item->id) }}" style="color: #fff"> Update</a></button>
                                     </div>
                                 </div>
-                            </div>
+                            </div> {{-- End col  --}}
                         @endforeach
-
-                    </div>
+                    </div> {{-- End row --}}
                 </div>
             </div>
         </div>

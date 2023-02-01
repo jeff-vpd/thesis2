@@ -53,8 +53,8 @@ Route::controller(StudentController::class)->group(function () {
     Route::get('/student/edit/{id}', 'StudentEdit')->name('student.edit');
     Route::post('/student/update', 'StudentUpdate')->name('student.update');
     Route::get('/student/delete{id}', 'StudentDelete')->name('student.delete');
-    Route::get('/student/homework', 'StudentHomework')->name('student.homework');
-    Route::post('/student/homework/store', 'HomeworkStore')->name('homework.store');
+    Route::get('/student/homework{id}', 'StudentHomework')->name('student.homework');
+    Route::post('/student/homework/store', 'StudentHomeworkStore')->name('student.homework.store');
 });
 
 Route::controller(FileUpload::class)->group(function () {

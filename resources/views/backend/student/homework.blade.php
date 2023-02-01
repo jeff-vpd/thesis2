@@ -12,59 +12,57 @@
     <div class="page-content">
         <div class="container-fluid">
             <div class="container text-center">
-                
+
                 <div class="container px-4 text-center">
                     <div class="mb-5 shadow p-3 mb-5 bg-body-tertiary bg-info rounded">
                         <h1 class="text-white">Homework Name</h1>
                     </div>
+
+
                     <div class="row gx-3">
                         <div class="col shadow p-3 mb-5 bg-body-tertiary rounded"
                             style="background-color: aliceblue;margin:20px;">
                             <div class="" style="padding:20px;">
                                 <div class="three text-start">
-                                    <h1>Homework Description</h1>
+                                    <h1>{{ $homework->category }}</h1>
                                 </div>
-                                <div class="content">
-                                    <p style="font-size: 18px;">Lorem Ipsum is simply dummy text of the printing and
-                                        typesetting industry. Lorem
-                                        Ipsum has been the industry's standard dummy text ever since the 1500s, when an
-                                        unknown printer took a galley of type and scrambled it to make a type specimen book.
-                                        It has survived not only five centuries, but also the leap into electronic
-                                        typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-                                        the release of Letraset sheets containing Lorem Ipsum passages, and more recently
-                                        with desktop publishing software like Aldus PageMaker including versions of Lorem
-                                        Ipsum.</p>
-                                    <iframe width="90%" height="615" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-                                    </iframe>
+                                <div class="content" style="display:flex;">
+                                    {!! $homework->description !!}
+                                </div>
+                                <div class="mb-5">
+                                    <a href="{{ $homework->video_link }}">{{ $homework->video_link }}</a>
                                 </div>
                                 <div class="form-control ">
                                     <div class="container mt-5">
-                                        <form action="{{ route('homework.store') }}" method="post"
+                                        <form action="{{ route('student.homework.store') }}" method="post"
                                             enctype="multipart/form-data">
-                                            <div class="mb-5 shadow p-3 bg-body-tertiary bg-info rounded" style="width:93%;margin:auto">
+                                            <input type="hidden" name="subject_id" value="{{ $homework->subject_id }}">
+                                            <div class="mb-5 shadow p-3 bg-body-tertiary bg-info rounded"
+                                                style="width:93%;margin:auto">
                                                 <h2 class="text-white">Upload File</h2>
                                             </div>
-                                            
+
                                             @csrf
                                             <div class="custom-file">
                                                 <div class="row">
 
-                                                    <div class="col"><label class="custom-file-label" for="chooseFile" style="font-size:30px"><i
+                                                    <div class="col"><label class="custom-file-label" for="chooseFile"
+                                                            style="font-size:30px"><i
                                                                 class="fa-solid fa-cloud-arrow-up"></i> Select file</label>
                                                     </div>
                                                 </div>
                                                 <div style="width:50%; margin:auto;">
                                                     <input class="form-control form-control-lg custom-file-input"
-                                                        id="chooseFile" type="file">
+                                                        id="chooseFile" type="file" name="file">
                                                 </div>
                                             </div>
-                                            <button type="submit" name="submit" class="btn btn-primary btn-block mt-4" style="font-size: 20px;">
+                                            <button type="submit" name="submit" class="btn btn-primary btn-block mt-4"
+                                                style="font-size: 20px;">
                                                 Submit Homework
                                             </button>
                                         </form>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
 

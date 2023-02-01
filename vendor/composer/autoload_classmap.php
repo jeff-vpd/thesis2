@@ -38,7 +38,7 @@ return array(
     'App\\Http\\Requests\\Auth\\LoginRequest' => $baseDir . '/app/Http/Requests/Auth/LoginRequest.php',
     'App\\Models\\Homework' => $baseDir . '/app/Models/Homework.php',
     'App\\Models\\Student' => $baseDir . '/app/Models/Student.php',
-    'App\\Models\\Student_Homework' => $baseDir . '/app/Models/Student_Homework.php',
+    'App\\Models\\StudentHomework' => $baseDir . '/app/Models/StudentHomework.php',
     'App\\Models\\Subject' => $baseDir . '/app/Models/Subject.php',
     'App\\Models\\Teacher' => $baseDir . '/app/Models/Teacher.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',

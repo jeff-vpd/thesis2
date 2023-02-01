@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\StudentHomework;
 use App\Models\Homework;
 use Auth;
 use Illuminate\Support\Carbon;
@@ -15,8 +16,11 @@ class StudentController extends Controller
         $student = Student::latest()->get();
         return view('backend.student.student_all', compact('student'));
     }
-    public function dashboard(){
-        $homework = Homework::with('subject','teacher')->latest()->get();
+    public function dashboard()
+    {
+        $homework = Homework::with('subject', 'teacher')
+            ->latest()
+            ->get();
         return view('backend.student.student_dashboard', compact('homework'));
     }
 
@@ -107,8 +111,8 @@ class StudentController extends Controller
                 'guardian_mobile_no' => $request->guardian_mobile_no,
                 'guardian_email' => $request->guardian_email,
                 'address' => $request->address,
-                'updated_by' => Auth::user()->id,
-                'updated_at' => Carbon::now(),
+                'created_by' => Auth::user()->id,
+                'updated_by' => Carbon::now(),
             ]);
 
             $notification = [
@@ -138,28 +142,37 @@ class StudentController extends Controller
             ->back()
             ->with($notification);
     } // End method
-     
-    public function StudentHomework(){
-        
-        $homework = Homework::with('subject','teacher')->latest()->get();
 
-        return view('backend.student.homework',compact('homework'));
+    public function StudentHomework($id)
+    {
+        $homework = Homework::findOrFail($id);
+        return view('backend.student.homework', compact('homework'));
     }
-//     public function HomeworkStore(Request $request){
 
-//         $image = $request->file('file');
-//         $imageName = $image->getClientOriginalName();
-//         $image->move(public_path('file'),$imageName);
+    public function StudentHomeworkStore(Request $request)
+    {
+        $request->validate(['file' => 'required|mimes:csv,txt,xlx,xls,pdf,png,jpg,doc,docx|max:2048']);
+        if ($request->file()) {
+            $fileName = time() . '_' . $request->file->getClientOriginalName();
+            $filePath = $request->file('file')->storeAs('file', $fileName, 'public');
+            $file_path = '/storage/' . $filePath;
+        }
 
-//         Homework::create([
-//             'user_id ' => 1,
-//             'title' => 1,
-//             'description' => $imageName,
-//             'content' => 1,
-//             'due_date' => '2023-01-28',
-//         ]);
-//         return view('backend.student.homework');
-//     }
-// }
+        StudentHomework::insert([
+            'student_id' => Auth::user()->id,
+            'subject_id' => $request->subject_id,
+            'file' => $fileName,
+            'created_by' => Auth::user()->id,
+            'created_at' => Carbon::now(),
+        ]);
 
+        $notification = [
+            'message' => 'Homework submitted Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()
+            ->route('student.all')
+            ->with($notification);
+    }
 }

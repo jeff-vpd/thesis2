@@ -574,7 +574,7 @@ class ComposerStaticInitbfb612b9931c9bda5475ab446a1035c4
         'App\\Http\\Requests\\Auth\\LoginRequest' => __DIR__ . '/../..' . '/app/Http/Requests/Auth/LoginRequest.php',
         'App\\Models\\Homework' => __DIR__ . '/../..' . '/app/Models/Homework.php',
         'App\\Models\\Student' => __DIR__ . '/../..' . '/app/Models/Student.php',
-        'App\\Models\\Student_Homework' => __DIR__ . '/../..' . '/app/Models/Student_Homework.php',
+        'App\\Models\\StudentHomework' => __DIR__ . '/../..' . '/app/Models/StudentHomework.php',
         'App\\Models\\Subject' => __DIR__ . '/../..' . '/app/Models/Subject.php',
         'App\\Models\\Teacher' => __DIR__ . '/../..' . '/app/Models/Teacher.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
