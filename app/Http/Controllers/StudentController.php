@@ -16,7 +16,8 @@ class StudentController extends Controller
         return view('backend.student.student_all', compact('student'));
     }
     public function dashboard(){
-        return view('backend.student.student_dashboard');
+        $homework = Homework::with('subject','teacher')->latest()->get();
+        return view('backend.student.student_dashboard', compact('homework'));
     }
 
     public function StudentAdd()
@@ -139,7 +140,10 @@ class StudentController extends Controller
     } // End method
      
     public function StudentHomework(){
-        return view('backend.student.homework');
+        
+        $homework = Homework::with('subject','teacher')->latest()->get();
+
+        return view('backend.student.homework',compact('homework'));
     }
 //     public function HomeworkStore(Request $request){
 
