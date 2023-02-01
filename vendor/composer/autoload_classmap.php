@@ -25,6 +25,7 @@ return array(
     'App\\Http\\Controllers\\SubjectController' => $baseDir . '/app/Http/Controllers/SubjectController.php',
     'App\\Http\\Controllers\\TeacherController' => $baseDir . '/app/Http/Controllers/TeacherController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
+    'App\\Http\\Middleware\\AdminMiddleware' => $baseDir . '/app/Http/Middleware/AdminMiddleware.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckAge' => $baseDir . '/app/Http/Middleware/CheckAge.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
