@@ -36,26 +36,7 @@
                                         <th>Action</th>
                                 </thead>
                                 <tbody>
-                                    @foreach ($student_homework as $key => $item)
-                                        <tr>
-                                            <td style="width: 5%"> {{ $key + 1 }} </td>
-                                            <td style="width: 10%"> {{ $item->student->name }} </td>
-                                            <td style="width: 10%"> {{ $item->subject->name }} </td>
-                                            <td style="width: 10%"> {{ $item->teacher->name }} </td>
-                                            <td style="width: 20%"> {{ $item->rating }} </td>
-                                            <td style="width: 10%"> {{ $item->file }} </td>
-                                            
-                                            <td>
-                                                <a href="" class="btn btn-info sm" title="Edit Data"> <i
-                                                        class="fas fa-edit"></i>
-                                                </a>
-
-                                                <a href="" class="btn btn-danger sm" title="Delete Data"
-                                                    id="delete"> <i class="fas fa-trash-alt"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                    
                                 </tbody>
                             </table>
                         </div>
