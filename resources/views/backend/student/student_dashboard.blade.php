@@ -7,33 +7,187 @@
     <div class="page-content">
         <div class="container-fluid">
             <div class="container text-center">
-                <div class="mb-5 shadow p-3 mb-5 bg-body-tertiary bg-info rounded">
-                    <h1 class="text-white">My Homework</h1>
-                </div> {{-- End title page --}}
+                <div class="heading">
+                    <h1 class="heading__title">My Homework</h1>
+                </div>
                 <div class="container px-4 text-center">
                     <div class="row gx-3">
                         @foreach ($homework as $item)
-                            <div class="col-5 shadow p-3 mb-5 bg-body-tertiary rounded"
-                                style="background-color: aliceblue;margin:20px;">
-                                <div class="" style="padding:20px;">
-                                    <div class="three text-start">
-                                        <h1>{{ $item->category }}</h1>
-                                    </div>
-                                    <div class="content" style="display:flex;">
-                                        {!! $item->description !!}
-                                    </div>
-                                    <div>
-                                        <button class="btn btn-primary" role="button"> <a
-                                                href="{{ route('student.homework', $item->id) }}" style="color: #fff"> View Homework</a></button>
+                            <div class="col-6 p-3 mb-5 bg-body-tertiary rounded">
+                                <div class="cards">
+                                    <div class="card card-1">
+                                        <div class="card__icon"><i
+                                                class=" fas fa-file
+                                            "></i>
+                                            {{ $item->category }}
+                                        </div>
+                                        <p class="card__exit"><i class="fas fa-times"></i></p>
+                                        <h3 class="card__title"><em>{{ $item->subject->name }}</em></h3>
+                                        <p class="card__apply">
+                                            <a class="card__link" href="{{ route('student.homework', $item->id) }}">See
+                                                more! <i class="fas fa-arrow-right"></i></a>
+                                        </p>
                                     </div>
                                 </div>
                             </div> {{-- End col  --}}
                         @endforeach
                     </div> {{-- End row --}}
+
+                    <div class="main-container">
+
+
+                    </div>
+
+                    {{-- End row --}}
+
+
                 </div>
             </div>
         </div>
     </div>
+
+
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+                Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        }
+
+        .main-container {
+            padding: 30px;
+        }
+
+        /* HEADING */
+
+        .heading {
+            text-align: center;
+        }
+
+        .heading__title {
+            font-weight: 600;
+        }
+
+        .heading__credits {
+            margin: 10px 0px;
+            color: #888888;
+            font-size: 25px;
+            transition: all 0.5s;
+        }
+
+        .heading__link {
+            text-decoration: none;
+        }
+
+        .heading__credits .heading__link {
+            color: inherit;
+        }
+
+        /* CARDS */
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .card {
+            margin: 20px;
+            padding: 20px;
+            width: 500px;
+            min-height: 200px;
+            display: grid;
+            grid-template-rows: 20px 50px 1fr 50px;
+            border-radius: 10px;
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
+            transition: all 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
+            transform: scale(1.01);
+        }
+
+        .card__link,
+        .card__exit,
+        .card__icon {
+            position: relative;
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .card__link::after {
+            position: absolute;
+            top: 25px;
+            left: 0;
+            content: "";
+            width: 0%;
+            height: 3px;
+            background-color: rgba(255, 255, 255, 0.6);
+            transition: all 0.5s;
+        }
+
+        .card__link:hover::after {
+            width: 100%;
+        }
+
+        .card__exit {
+            grid-row: 1/2;
+            justify-self: end;
+        }
+
+        .card__icon {
+            grid-row: 2/3;
+            font-size: 30px;
+        }
+
+        .card__title {
+            grid-row: 3/4;
+            font-weight: 400;
+            color: #ffffff;
+        }
+
+        .card__apply {
+            grid-row: 4/5;
+            align-self: center;
+        }
+
+        /* CARD BACKGROUNDS */
+
+        .card-1 {
+            background: radial-gradient(#1fe4f5, #3fbafe);
+        }
+
+        .card-2 {
+            background: radial-gradient(#fbc1cc, #fa99b2);
+        }
+
+        .card-3 {
+            background: radial-gradient(#76b2fe, #b69efe);
+        }
+
+        .card-4 {
+            background: radial-gradient(#60efbc, #58d5c9);
+        }
+
+        .card-5 {
+            background: radial-gradient(#f588d8, #c0a3e5);
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1600px) {
+            .cards {
+                justify-content: center;
+            }
+        }
+    </style>
 
     <script type="text/javascript">
         $(document).ready(function() {

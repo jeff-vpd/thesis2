@@ -9,19 +9,33 @@
              <ul class="metismenu list-unstyled" id="side-menu">
                  <li class="menu-title">Menu</li>
 
+                 @if (Auth::user()->role == 1)
+
                  <li>
                      <a href="#" class="waves-effect">
                          <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">3</span>
                          <span>Dashboard</span>
                      </a>
                  </li>
+                 @endif
 
                  <li>
-                     <a href="calendar.html" class=" waves-effect">
-                         <i class="ri-calendar-2-line"></i>
-                         <span>Calendar</span>
-                     </a>
-                 </li>
+                    <a href="{{route('student.dashboard')}}" class="waves-effect">
+                        <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">3</span>
+                        <span>My Dashboard</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class=" ri-group-fill"></i>
+                        <span>Homeworks</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('student.myhomeworks') }}">My Homeworks</a></li>
+                    </ul>
+                </li>
+
                  @if (Auth::user()->role == 1)
                  <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -77,20 +91,6 @@
                      </ul>
                  </li>
                  @endif
-                 <li>    
-                     <a href="javascript: void(0);" class="has-arrow waves-effect">
-                         <i class="ri-booklet-fill"></i>
-                         <span>Classroom</span>
-                     </a>
-                     
-                     <ul class="sub-menu" aria-expanded="false">
-                         <li><a href="">Classroom List</a></li>
-                         @if (Auth::user()->role == 1)
-                         <li><a href="email-inbox.html">Add Classroom</a></li>
-                         @endif
-
-                     </ul>
-                 </li>
 
                  @if (Auth::user()->role == 1)
 

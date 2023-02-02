@@ -60,14 +60,14 @@
                                     <div class="container mt-5">
                                         <form action="{{ route('student.homework.store') }}" method="post"
                                             enctype="multipart/form-data">
-                                            <input type="text" name="subject_id" value="{{ $homework->subject_id }}">
+                                            <input type="hidden" name="subject_id" value="{{ $homework->subject_id }}">
                                             <div class="mb-2 shadow p-1 bg-body-tertiary rounded"
                                                 style="width:93%;margin:auto">
                                                 <h2 class="">Upload File</h2>
                                             </div>
 
                                             @csrf
-                                            <input type="text" name="teacher_id" value="{{$homework->teacher_id}}" readonly>
+                                            <input type="hidden" name="teacher_id" value="{{$homework->teacher_id}}" readonly>
                                             <div class="custom-file">
                                                 <div class="row">
 
