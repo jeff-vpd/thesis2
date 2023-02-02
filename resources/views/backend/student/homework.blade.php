@@ -14,25 +14,26 @@
             <div class="container text-center">
 
                 <div class="container px-4 text-center">
-                    <div class="mb-5 shadow p-3 mb-5 bg-body-tertiary bg-info rounded">
-                        <h1 class="text-white">Homework Name</h1>
-                    </div>
+
 
 
                     <div class="row gx-3">
-                        
                         <div class="col shadow p-3 mb-5 bg-body-tertiary rounded"
-                            style="background-color: aliceblue;margin:20px;">
+                            style="background: radial-gradient(#1fe4f5, #3fbafe);">
+                            <h1 class="text-white">Homework Name</h1>
+
                             <div class="" style="padding:20px;">
                                 <div class="three text-start">
-                                    <h1>{{ $homework->category }}</h1>
-                                </div>
-                                <div>
-                                    <h5>Homework Grade: <span class="badge bg-success">Grade</span></h5>
 
                                 </div>
-                                <div class="content" style="font-size:16px" style="width:60%; margin:auto;">
-                                    {!! $homework->description !!}
+                                <div>
+                                    {{-- <h5>Homework Grade: <span class="badge bg-success">Grade</span></h5> --}}
+
+                                </div>
+                                <div class="card__title" style="font-size:16px" style="width:60%; margin:auto;">
+                                    <p class="justified">
+                                        {!! $homework->description !!}
+                                    </p>
                                 </div>
                                 <div class="row">
                                     <div class="mb-2 col-6">
@@ -48,46 +49,42 @@
                                             <h6>{{ $homework->file }}</h6>
                                         </div>
                                         <div class=""><button class="btn btn-info"><a
-                                                    href="{{ asset('/uploads/'.$homework->file) }}" download
+                                                    href="{{ asset('/uploads/' . $homework->file) }}" download
                                                     style="color: rgb(255, 255, 255)">Download</a></button></div>
                                     </div>
 
-                                    
+
                                 </div>
 
 
-                                <div class="form-control ">
-                                    <div class="container mt-5">
-                                        <form action="{{ route('student.homework.store') }}" method="post"
-                                            enctype="multipart/form-data">
-                                            <input type="hidden" name="subject_id" value="{{ $homework->subject_id }}">
-                                            <div class="mb-2 shadow p-1 bg-body-tertiary rounded"
-                                                style="width:93%;margin:auto">
-                                                <h2 class="">Upload File</h2>
-                                            </div>
-
-                                            @csrf
-                                            <input type="hidden" name="teacher_id" value="{{$homework->teacher_id}}" readonly>
-                                            <div class="custom-file">
-                                                <div class="row">
-
-                                                    <div class="col"><label class="custom-file-label" for="chooseFile"
-                                                            style="font-size:30px"><i
-                                                                class="fa-solid fa-cloud-arrow-up"></i> Select file</label>
-                                                    </div>
-                                                </div>
-                                                <div style="width:50%; margin:auto;">
-                                                    <input class="form-control form-control-lg custom-file-input"
-                                                        id="chooseFile" type="file" name="file">
-                                                </div>
-                                            </div>
-                                            <button type="submit" name="submit" class="btn btn-primary btn-block mt-4"
-                                                style="font-size: 20px;">
-                                                Submit Homework
-                                            </button>
-                                        </form>
+                                <form action="{{ route('student.homework.store') }}" method="post"
+                                    enctype="multipart/form-data">
+                                    <input type="hidden" name="subject_id" value="{{ $homework->subject_id }}">
+                                    <div class="mb-2 p-1 bg-body-tertiary rounded" style="width:93%;margin:auto">
+                                        <h2 class="">Upload File</h2>
                                     </div>
-                                </div>
+
+                                    @csrf
+                                    <input type="hidden" name="teacher_id" value="{{ $homework->teacher_id }}" readonly>
+                                    <div class="custom-file">
+                                        <div class="row">
+
+                                            <div class="col"><label class="custom-file-label" for="chooseFile"
+                                                    style="font-size:30px"><i class="fa-solid fa-cloud-arrow-up"></i> Select
+                                                    file</label>
+                                            </div>
+                                        </div>
+                                        <div style="width:50%; margin:auto;">
+                                            <input class="form-control form-control-lg custom-file-input" id="chooseFile"
+                                                type="file" name="file">
+                                        </div>
+                                    </div>
+                                    <button type="submit" name="submit" class="btn btn-primary btn-block mt-4"
+                                        style="font-size: 20px;">
+                                        Submit Homework
+                                    </button>
+                                </form>
+
                             </div>
                         </div>
 
@@ -96,6 +93,23 @@
             </div>
         </div>
     </div>
+
+    <style>
+        .card__title {
+            grid-row: 3/4;
+            font-weight: 400;
+            color: #ffffff;
+
+        }
+
+        .justified {
+            text-align: right !important;
+        }
+
+        .ql-align-justify{
+            text-align: justify;
+        }
+    </style>
 
     <script type="text/javascript">
         $(document).ready(function() {
