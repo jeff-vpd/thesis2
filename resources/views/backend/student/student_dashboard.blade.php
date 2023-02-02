@@ -3,30 +3,37 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
         rel="stylesheet">
-    <link rel="stylesheet" href="/css/student/style.student.css">
+    <link rel="stylesheet" href="{{ url('/css/student/style.student.css') }}">
     <div class="page-content">
         <div class="container-fluid">
             <div class="container text-center">
                 <div class="heading">
-                    <h1 class="heading__title">My Homework</h1>
+                    <h1 class="heading__title">My Homework Dashboard</h1>
                 </div>
                 <div class="container px-4 text-center">
                     <div class="row gx-3">
                         @foreach ($homework as $item)
                             <div class="col-6 p-3 mb-5 bg-body-tertiary rounded">
                                 <div class="cards">
-                                    <div class="card card-1">
-                                        <div class="card__icon"><i
+                                    <div class="card card-1 row">
+                                        <div class="card__icon" style="color: rgb(44, 42, 42)"><i
                                                 class=" fas fa-file
                                             "></i>
                                             {{ $item->category }}
                                         </div>
-                                        <p class="card__exit"><i class="fas fa-times"></i></p>
-                                        <h3 class="card__title"><em>{{ $item->subject->name }}</em></h3>
-                                        <p class="card__apply">
-                                            <a class="card__link" href="{{ route('student.homework', $item->id) }}">See
-                                                more! <i class="fas fa-arrow-right"></i></a>
-                                        </p>
+                                        <div>
+                                            <p class="card__exit" style="display: none"><i class="fas fa-times"></i></p>
+                                        </div>
+                                        <div>
+                                            <h3 class="card__title" style="color:rgb(51, 51, 51)">Subject: <em>{{ $item->subject->name }}</em></h3>
+                                        </div>
+                                        <div>
+                                            <p class="card__apply">
+                                                <a class="card__link" href="{{ route('student.homework', $item->id) }}" style="font-size: 20px">See
+                                                    more! <i class="fas fa-arrow-right"></i></a>
+                                            </p>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div> {{-- End col  --}}

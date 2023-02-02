@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('student_id')->nullable();
             $table->string('subject_id')->nullable();
             $table->string('teacher_id')->nullable();
-            // $table->string('homework_id')->nullable();
+            $table->string('homework_id')->nullable();
             $table->string('rating')->nullable();
             $table->string('comment')->nullable();;
             $table->string('file')->nullable();

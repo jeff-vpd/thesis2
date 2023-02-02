@@ -29,7 +29,7 @@
                                         <th>Subject</th>
                                         <th>Teacher</th>
                                         <th>Category</th>
-                                        <th>Description</th>
+                                        {{-- <th>Description</th> --}}
                                         <th>File</th>
                                         <th>Rating</th>
                                         <th>Comment</th>
@@ -48,11 +48,11 @@
                                             <td>{{$key + 1}}</td>
                                             <td>{{$item->subject->name}}</td>
                                             <td>{{$item->teacher->name}}</td>
-                                            <td>Category to be filled</td>
-                                            <td>Description to be filled</td>
+                                            <td>{{$item->homework_id}}</td>
+                                            {{-- <td>Description to be filled</td> --}}
                                             <td>{{$item->file}}</td>
                                             <td><?= $status?></td>
-                                            <td>{{$item->comment}}</td>
+                                            <td>{!!$item->comment!!}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

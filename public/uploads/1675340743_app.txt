@@ -1,0 +1,27 @@
+import React from 'react'
+
+/*styles*/
+import './App.css'
+
+/*components*/
+import Card from './Card'
+
+
+const App = () =>{
+
+
+
+
+return(
+   
+   <div className="app-main">
+    <Card name="Jeffy" age={25} gender ="Male"/>
+    <Card name="Kende" age={25} gender ="Female"/>
+    <Card name="Mona" age={9} gender ="Female"/>
+    <Card name="Flukey" age={1} gender ="Female"/>
+       </div>
+
+)
+
+}
+export default App

@@ -199,3 +199,16 @@ body{
 .button-17:disabled {
   box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
 }
+
+.sbmit:hover {
+  background-color: rgb(56, 48, 48) ;
+  color: #dee9ff;
+  transition-delay: .1s;
+  border-color: rgb(56, 48, 48);
+}
+.watch:hover {
+  background-color: #6FD088 ;
+  color: #efeff3;
+  transition-delay: .1s;
+  border-color: #6FD088;
+}

@@ -3,7 +3,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
         rel="stylesheet">
-    <link rel="stylesheet" href="/css/student/style.student.css">
+    <link rel="stylesheet" href="{{url('/css/student/style.student.css')}}">
     {{-- dropzone --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css">
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
@@ -19,8 +19,8 @@
 
                     <div class="row gx-3">
                         <div class="col shadow p-3 mb-5 bg-body-tertiary rounded"
-                            style="background: radial-gradient(#1fe4f5, #3fbafe);">
-                            <h1 class="text-white">Homework Name</h1>
+                            style="background: radial-gradient(#13a4b1, #3fbafe);">
+                            <h1 class="text-white">{{$homework->category}}</h1>
 
                             <div class="" style="padding:20px;">
                                 <div class="three text-start">
@@ -34,23 +34,24 @@
                                     <p class="justified">
                                         {!! $homework->description !!}
                                     </p>
+                                
                                 </div>
                                 <div class="row">
                                     <div class="mb-2 col-6">
                                         <div class="">
                                             <h6>{{ $homework->video_link }}</h6>
                                         </div>
-                                        <div class=""><button class="btn btn-info"><a
+                                        <div class=""><button class="watch btn btn-light"><a
                                                     href="{{ $homework->video_link }}" target="_blank"
-                                                    style="color: rgb(255, 255, 255)">Watch Here</a></button></div>
+                                                    style="color: rgb(37, 35, 35)">Watch Here</a></button></div>
                                     </div>
                                     <div class="mb-5 col-6">
                                         <div class="">
                                             <h6>{{ $homework->file }}</h6>
                                         </div>
-                                        <div class=""><button class="btn btn-info"><a
+                                        <div class=""><button class="watch btn btn-light"><a
                                                     href="{{ asset('/uploads/' . $homework->file) }}" download
-                                                    style="color: rgb(255, 255, 255)">Download</a></button></div>
+                                                    style="color: rgb(37, 35, 35)">Download</a></button></div>
                                     </div>
 
 
@@ -60,6 +61,7 @@
                                 <form action="{{ route('student.homework.store') }}" method="post"
                                     enctype="multipart/form-data">
                                     <input type="hidden" name="subject_id" value="{{ $homework->subject_id }}">
+                                    <input type="hidden" name="homework_id" value="{{ $homework->category }}">
                                     <div class="mb-2 p-1 bg-body-tertiary rounded" style="width:93%;margin:auto">
                                         <h2 class="">Upload File</h2>
                                     </div>
@@ -79,7 +81,7 @@
                                                 type="file" name="file">
                                         </div>
                                     </div>
-                                    <button type="submit" name="submit" class="btn btn-primary btn-block mt-4"
+                                    <button type="submit" name="submit" class="sbmit btn btn-light btn-block mt-4"
                                         style="font-size: 20px;">
                                         Submit Homework
                                     </button>
