@@ -154,7 +154,7 @@ class StudentController extends Controller
         $request->validate(['file' => 'required|mimes:csv,txt,xlx,xls,pdf,png,jpg,doc,docx|max:2048']);
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
-            $filePath = $request->file('file')->storeAs('file', $fileName, 'public');
+            $filePath = $request->file->move(public_path('uploads'), $fileName);
             $file_path = '/upload/' . $filePath;
         }
 

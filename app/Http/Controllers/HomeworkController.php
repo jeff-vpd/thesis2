@@ -35,8 +35,7 @@ class HomeworkController extends Controller
             ]);
             if($request->file()) {
                 $fileName = time().'_'.$request->file->getClientOriginalName();
-                $filePath = $request->file('file')->storeAs('file', $fileName, 'public');
-                $file_path = '/upload/' . $filePath;
+                $filePath = $request->file->move(public_path('uploads'), $fileName);
 
             }
             
