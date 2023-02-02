@@ -48,9 +48,11 @@
                                             <h6>{{ $homework->file }}</h6>
                                         </div>
                                         <div class=""><button class="btn btn-info"><a
-                                                    href="\storage\file\{{ $homework->file }}" download
+                                                    href="storage\app\public\upload\{{ $homework->file }}" download
                                                     style="color: rgb(255, 255, 255)">Download</a></button></div>
                                     </div>
+
+                                    
                                 </div>
 
 

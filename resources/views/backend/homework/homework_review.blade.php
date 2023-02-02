@@ -11,7 +11,7 @@
                         <div class="card-body">
                             <h4 class="card-title">Review Student Page </h4><br><br>
 
-                            <form method="post" action="{{ route('student.update') }}" id="myForm"
+                            <form method="post" action="{{ route('homework.review.update') }}" id="myForm"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $student_homework->id }}">
@@ -20,7 +20,7 @@
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Submitted File</label>
                                     <div class="form-group col-sm-10">
                                         <button class="btn btn-sm btn-primary"><a
-                                            href="\storage\file\{{ $student_homework->file }}" download
+                                            href="\storage\app\public\file\{{ $student_homework->file }}" download
                                             style="color: rgb(255, 255, 255)">Download</a></button> <span> <em>{{ $student_homework->file }}</em> </span>
                                     </div>
                                 </div>
@@ -39,7 +39,7 @@
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Rating</label>
                                     <div class="form-group col-sm-10">
-                                        <input name="name" class="form-control" type="text">
+                                        <input name="rating" class="form-control" type="text">
                                     </div>
                                 </div>
                                 <div class="row mb-5">
@@ -50,7 +50,7 @@
                                             <p>White your Comment Here</p>
                                             <p><br></p>
                                         </div>
-                                        <textarea name="description" id="description" cols="30" rows="10" style="display: none"></textarea>
+                                        <textarea name="comment" id="comment" cols="30" rows="10" style="display: none"></textarea>
                                     </div>
                                 </div>
                                 <!-- end row -->
@@ -69,7 +69,7 @@
             theme: 'snow'
         });
         $("#myForm").on("submit", function() {
-            $("#description").val($("#descriptionQuill .ql-editor").html());
+            $("#comment").val($("#descriptionQuill .ql-editor").html());
         });
     </script>
     <script type="text/javascript">

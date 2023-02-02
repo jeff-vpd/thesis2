@@ -35,9 +35,9 @@ class HomeworkController extends Controller
             ]);
             if($request->file()) {
                 $fileName = time().'_'.$request->file->getClientOriginalName();
-                $filePath = $request->file('file')->storeAs('file', $fileName, 'public');
-                $file_path = '/upload/' . $filePath;
-
+                $filePath = $request->file('file')->storeAs('upload', $fileName, 'public');
+                // $file_path = '/upload/' . $filePath;
+                // Storage / App / Public / File
             }
             
             Homework::insert([
@@ -76,5 +76,26 @@ class HomeworkController extends Controller
         return view('backend.homework.homework_review', compact('student_homework'));
     } // End method
 
+    public function HomeworkReviewUpdate(Request $request)
+    {
+        $homeworkreview_id = $request->id;
+        StudentHomework::findOrFail($homeworkreview_id)->update([
+            'rating' => $request->rating,
+            'comment' => $request->comment,
+            'updated_by' => Auth::user()->id,
+            'updated_at' => Carbon::now(),
+        ]);
+
+        $notification = [
+            'message' => 'Teacher Updated Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()
+            ->route('homework.submitted')
+            ->with($notification);
+    } // End method
+
+    
 
 }

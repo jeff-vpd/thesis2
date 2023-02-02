@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class StudentHomework extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+
     public function subject(){
         return $this->hasOne(Subject::class, 'id', 'subject_id');
     }

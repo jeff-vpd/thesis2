@@ -19,7 +19,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            
+
 
                             <h4 class="card-title">Homrwork All Data </h4>
                             <table id="datatable" class="table table-bordered dt-responsive wrap"
@@ -28,7 +28,6 @@
                                     <tr>
                                         <th>Sl</th>
                                         <th>Student Name</th>
-
                                         <th>Subject</th>
                                         <th>Teacher</th>
                                         <th>rating</th>
@@ -43,13 +42,13 @@
                                             <td style="width: 10%"> {{ $item->student->name }} </td>
                                             <td style="width: 10%"> {{ $item->subject->name }} </td>
                                             <td style="width: 10%"> {{ $item->teacher->name }} </td>
-                                            <td style="width: 25%"> {{$item->rating}} </td>
-                                            <td style="width: 25%"> {{$item->file}} </td>
+                                            <td style="width: 25%"> {{ $item->rating }} </td>
+                                            <td style="width: 25%"> {!! $item->comment !!} </td>
                                             <td style="width: 10%"> {{ $item->file }} </td>
-                                            
+
                                             <td>
-                                                <a href="{{route('homework.review', $item->id)}}" class="btn btn-info sm" title="Edit Data"> <i
-                                                        class="fas fa-edit"></i>
+                                                <a href="{{ route('homework.review', $item->id) }}" class="btn btn-info sm"
+                                                    title="Edit Data"> <i class="fas fa-edit"></i>
                                                 </a>
                                             </td>
                                         </tr>
