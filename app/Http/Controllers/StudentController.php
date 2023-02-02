@@ -155,13 +155,13 @@ class StudentController extends Controller
         if ($request->file()) {
             $fileName = time() . '_' . $request->file->getClientOriginalName();
             $filePath = $request->file->move(public_path('uploads'), $fileName);
-            $file_path = '/upload/' . $filePath;
         }
 
         StudentHomework::insert([
             'student_id' => Auth::user()->id,
             'subject_id' => $request->subject_id,
             'teacher_id' => $request->teacher_id,
+            'homework_id' => $request->homework_id,
             'file' => $fileName,
             'created_by' => Auth::user()->id,
             'created_at' => Carbon::now(),
