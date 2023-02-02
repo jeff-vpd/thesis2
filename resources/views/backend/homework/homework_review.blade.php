@@ -20,7 +20,7 @@
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Submitted File</label>
                                     <div class="form-group col-sm-10">
                                         <button class="btn btn-sm btn-primary"><a
-                                            href="\storage\app\public\file\{{ $student_homework->file }}" download
+                                            href="{{ asset('/uploads/'.$student_homework->file) }}" download
                                             style="color: rgb(255, 255, 255)">Download</a></button> <span> <em>{{ $student_homework->file }}</em> </span>
                                     </div>
                                 </div>
