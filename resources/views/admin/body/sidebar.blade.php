@@ -3,8 +3,6 @@
      <div data-simplebar class="h-100">
 
          <!-- User details -->
-
-
          <!--- Sidemenu -->
          <div id="sidebar-menu">
              <!-- Left Menu Start -->
@@ -12,7 +10,7 @@
                  <li class="menu-title">Menu</li>
 
                  <li>
-                     <a href="index.html" class="waves-effect">
+                     <a href="#" class="waves-effect">
                          <i class="ri-dashboard-line"></i><span class="badge rounded-pill bg-success float-end">3</span>
                          <span>Dashboard</span>
                      </a>
@@ -24,6 +22,19 @@
                          <span>Calendar</span>
                      </a>
                  </li>
+                 @if (Auth::user()->role == 1)
+                 <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class=" ri-admin-fill"></i>
+                        <span>Teachers</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('teacher.all') }}">All Teachers</a></li>
+                        <li><a href="{{ route('teacher.add') }}">Assign Subject</a></li>
+                    </ul>
+                </li>
+                 @endif
+                 @if (Auth::user()->role == 1)
 
                  <li>
                      <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -31,34 +42,57 @@
                          <span>Students</span>
                      </a>
                      <ul class="sub-menu" aria-expanded="false">
-                         <li><a href="{{ route('student.all') }}">Student List</a></li>
-                         <li><a href="email-read.html">Add Students</a></li>
-                         <li><a href="email-read.html">Add Subject to Students</a></li>
+                         <li><a href="{{ route('student.all') }}">All Student</a></li>
+                         <li><a href="{{ route('student.add') }}">Add Subject to Students</a></li>
                      </ul>
                  </li>
+                 @endif
+
+                 @if (Auth::user()->role == 1)
+
                  <li>
                      <a href="javascript: void(0);" class="has-arrow waves-effect">
                          <i class=" ri-book-mark-line"></i>
                          <span>Subjects</span>
                      </a>
                      <ul class="sub-menu" aria-expanded="false">
-                         <li><a href="email-inbox.html">Subject List</a></li>
-                         <li><a href="email-inbox.html">Add Subject</a></li>
+                         <li><a href="{{ route('subject.all') }}">Subject List</a></li>
+                         <li><a href="{{ route('subject.all') }}">Add Subject</a></li>
 
                      </ul>
                  </li>
+                 @endif
+
+                 @if (Auth::user()->role == 1)
+
                  <li>
                      <a href="javascript: void(0);" class="has-arrow waves-effect">
                          <i class="ri-booklet-fill"></i>
                          <span>Homework</span>
                      </a>
                      <ul class="sub-menu" aria-expanded="false">
-                         <li><a href="email-inbox.html">Homework List</a></li>
-                         <li><a href="email-inbox.html">Add Homework</a></li>
+                         <li><a href="{{ route('homework.all') }}">Homework List</a></li>
+                         <li><a href="{{ route('homework.add') }}">Add Homework</a></li>
+
+                     </ul>
+                 </li>
+                 @endif
+                 <li>    
+                     <a href="javascript: void(0);" class="has-arrow waves-effect">
+                         <i class="ri-booklet-fill"></i>
+                         <span>Classroom</span>
+                     </a>
+                     
+                     <ul class="sub-menu" aria-expanded="false">
+                         <li><a href="">Classroom List</a></li>
+                         @if (Auth::user()->role == 1)
+                         <li><a href="email-inbox.html">Add Classroom</a></li>
+                         @endif
 
                      </ul>
                  </li>
 
+                 @if (Auth::user()->role == 1)
 
                  <li class="menu-title">Pages</li>
 
@@ -89,7 +123,7 @@
                          <li><a href="pages-500.html">Error 500</a></li>
                      </ul>
                  </li>
-
+                 @endif
 
 
 
