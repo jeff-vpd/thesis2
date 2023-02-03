@@ -80,20 +80,7 @@
                                     <input class="form-control" id="password_confirmation" type="password"
                                         name="password_confirmation" required="" placeholder="Password Confirmation">
                                 </div>
-                            </div>
-
-                            <div class="form-group mb-3 row">
-                                <div class="col-6">
-                                    <input type="radio" id="role" name="role" value="0">
-                                    <label for="html">Student</label><br>
-                                </div>
-                                <div class="col-6">
-                                    <input type="radio" id="role" name="role" value="1">
-                                    <label for="html">Teacher</label><br>
-                                </div>
-
-                                
-                            </div>
+                            </div>  
 
                             <div class="form-group text-center row mt-3 pt-1">
                                 <div class="col-12">

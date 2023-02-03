@@ -9,7 +9,6 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\HomeworkController;
 use App\Http\Controllers\FileUpload;
 
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -17,32 +16,29 @@ Route::get('/', function () {
 Route::controller(DemoController::class)->group(function () {
     Route::get('/about', 'Index')
         ->name('about.page')
-         ->middleware('check');
+        ->middleware('check');
     Route::get('/contact', 'ContactMethod')->name('cotact.page');
 });
 
-Route::prefix('admin')->middleware(['auth', 'isAdmin'])->group(function () {
-        // Admin All Route
-        Route::controller(AdminController::class)->group(function () {
-            
-            Route::get('/admin/profile', 'Profile')->name('admin.profile');
-            Route::get('/edit/profile', 'EditProfile')->name('edit.profile');
-            Route::post('/store/profile', 'StoreProfile')->name('store.profile');
+// Admin All Route
+Route::controller(AdminController::class)->group(function () {
+    Route::get('/admin/profile', 'Profile')->name('admin.profile');
+    Route::get('/edit/profile', 'EditProfile')->name('edit.profile');
+    Route::post('/store/profile', 'StoreProfile')->name('store.profile');
 
-            Route::get('/change/password', 'ChangePassword')->name('change.password');
-            Route::post('/update/password', 'UpdatePassword')->name('update.password');
-        });
+    Route::get('/change/password', 'ChangePassword')->name('change.password');
+    Route::post('/update/password', 'UpdatePassword')->name('update.password');
+});
 
-        // Teacher All Route
-        Route::controller(TeacherController::class)->group(function () {
-            Route::get('/teacher/all', 'TeacherAll')->name('teacher.all');
-            Route::get('/teacher/add', 'TeacherAdd')->name('teacher.add');
-            Route::post('/teacher/store', 'TeacherStore')->name('teacher.store');
-            Route::get('/teacher/edit/{id}', 'TeacherEdit')->name('teacher.edit');
-            Route::post('/teacher/update', 'TeacherUpdate')->name('teacher.update');
-            Route::get('/teacher/delete{id}', 'TeacherDelete')->name('teacher.delete');
-        });
-    });
+// Teacher All Route
+Route::controller(TeacherController::class)->group(function () {
+    Route::get('/teacher/all', 'TeacherAll')->name('teacher.all');
+    Route::get('/teacher/add', 'TeacherAdd')->name('teacher.add');
+    Route::post('/teacher/store', 'TeacherStore')->name('teacher.store');
+    Route::get('/teacher/edit/{id}', 'TeacherEdit')->name('teacher.edit');
+    Route::post('/teacher/update', 'TeacherUpdate')->name('teacher.update');
+    Route::get('/teacher/delete{id}', 'TeacherDelete')->name('teacher.delete');
+});
 
 // Student All Route
 Route::controller(StudentController::class)->group(function () {
@@ -78,13 +74,12 @@ Route::controller(HomeworkController::class)->group(function () {
     Route::get('/homework/submitted', 'HomeworkSubmitted')->name('homework.submitted');
     Route::get('/homework/review{id}', 'HomeworkReview')->name('homework.review');
     Route::post('/homework/review/update', 'HomeworkReviewUpdate')->name('homework.review.update');
-
+    Route::get('/homework/delete{id}', 'HomeworkDelete')->name('homework.delete');
 
 });
 Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
 Route::get('/student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
 Route::get('/student/myhomeworks', [StudentController::class, 'Myhomeworks'])->name('student.myhomeworks');
-
 
 Route::get('/dashboard', function () {
     return view('admin.index');

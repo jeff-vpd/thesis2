@@ -95,6 +95,17 @@ class HomeworkController extends Controller
             ->with($notification);
     } // End method
 
-    
+    public function HomeworkDelete($id)
+    {
+        Homework::findOrFail($id)->delete();
+        $notification = [
+            'message' => 'Homework Successfully Deleted!!',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()
+            ->back()
+            ->with($notification);
+    } // End method
 
 }

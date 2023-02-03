@@ -33,26 +33,40 @@
                             <div class="form-group col-6">
                                 <select name="level" id="level" class="form-select item">
                                     <option value="0">Select Grade</option>
-                                    <option value="Preschool Teachers/Child Care Workers">Preschool Teachers/Child Care Workers
+                                    <option value="Preschool Teachers/Child Care Workers">Preschool Teachers/Child Care
+                                        Workers
                                     </option>
                                     <option value="Elementary School Teachers (K-6)">Elementary School Teachers (K-6)
                                     </option>
-                                    <option value="Secondary School Teachers (Middle School/Jr. High School/High School)">Secondary School Teachers (Middle School/Jr. High School/High School)</option>
-                                    <option value="Special Education Teacher (K-12)">Special Education Teacher (K-12)</option>
-                                    <option value="College/University Faculty (Post-Secondary/Higher Education)">College/University Faculty (Post-Secondary/Higher Education)</option>
-                                    <option value="Counselors (School Counseling/College Counseling)">Counselors (School Counseling/College Counseling)</option>
+                                    <option value="Secondary School Teachers (Middle School/Jr. High School/High School)">
+                                        Secondary School Teachers (Middle School/Jr. High School/High School)</option>
+                                    <option value="Special Education Teacher (K-12)">Special Education Teacher (K-12)
+                                    </option>
+                                    <option value="College/University Faculty (Post-Secondary/Higher Education)">
+                                        College/University Faculty (Post-Secondary/Higher Education)</option>
+                                    <option value="Counselors (School Counseling/College Counseling)">Counselors (School
+                                        Counseling/College Counseling)</option>
                                     <option value="Adult Education">Adult Education</option>
                                 </select>
                             </div>
+
                             <div class="form-group col-6">
-                                <select name="subject_id" class="form-select item" aria-label="Default select example">
-                                    <option selected="">Select Subject</option>
-                                    @foreach ($subject as $sub)
-                                        <option value="{{ $sub->id }}">{{ $sub->name }}</option>
-                                    @endforeach
-                                </select>
+                                <input name="username" class="form-control item" type="text" placeholder="Username">
                             </div>
 
+                            <div class="form-group col-6">
+                                <input name="email" class="form-control item" type="email" placeholder="Email">
+                            </div>
+
+                            <div class="form-group col-6">
+                                <input name="password" class="form-control item" type="text"
+                                    id="password "placeholder="Password">
+                            </div>
+
+                            <div class="form-group col-6">
+                                <input class="form-control item" id="password_confirmation" type="password"
+                                    name="password_confirmation" required="" placeholder="Password Confirmation">
+                            </div>
                         </div>
 
                         <div class="form-group">

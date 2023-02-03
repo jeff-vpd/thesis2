@@ -48,10 +48,35 @@ class RegisteredUserController extends Controller
             'role' => $request->role,
         ]);
 
+        // $request->validate([
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'username' => ['required', 'string','max:255', 'unique:users'],
+        //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        //     'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        // ]);
+
+        // $user = User::create([
+        //     'title' => $request->title,
+        //     'name' => $request->name,
+        //     'username' => $request->username,
+        //     'email' => $request->email,
+        //     'password' => Hash::make($request->password),
+        //     'level' => $request->level,
+        //     'role' => $request->role,
+        // ]);
+
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        $notification = [
+            'message' => $user +'has been successfully registered!',
+            'alert-type' => 'success',
+        ];
+        return redirect()
+        ->route('student.dashboard')
+        ->with($notification);
+
+        
     }
 }

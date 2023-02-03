@@ -7,8 +7,12 @@ use App\Models\Subject;
 use App\Models\Homework;
 use App\Models\StudentHomework;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Auth\Events\Registered;
 
-use Auth;
 use Illuminate\Support\Carbon;
 use Image;
 
@@ -16,10 +20,8 @@ class TeacherController extends Controller
 {
     public function TeacherAll()
     {
-        $teacher = Teacher::with('subject')
-            ->latest()
-            ->get();
-        return view('backend.teacher.teacher_all', compact('teacher'));
+        $user = User::where('role', 1)->get();
+        return view('backend.teacher.teacher_all', compact('user'));
     }
     public function TeacherAdd()
     {
@@ -29,17 +31,25 @@ class TeacherController extends Controller
 
     public function TeacherStore(Request $request)
     {
-        Teacher::insert([
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+
+        $user = User::create([
             'title' => $request->title,
             'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
             'level' => $request->level,
-            'subject_id' => $request->subject_id,
-            'created_by' => Auth::user()->id,
-            'created_at' => Carbon::now(),
+            'role' => 1,
         ]);
 
         $notification = [
-            'message' => 'Teacher Inserted Successfully',
+            'message' => 'Teacher Updated Successfully',
             'alert-type' => 'success',
         ];
 
@@ -90,6 +100,4 @@ class TeacherController extends Controller
             ->back()
             ->with($notification);
     } // End method
-
-
 }

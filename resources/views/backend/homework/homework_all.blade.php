@@ -19,7 +19,7 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-body">
-                            <a href="{{route('homework.add')}}" class="btn btn-dark btn-rounded waves-effect waves-light"
+                            <a href="{{ route('homework.add') }}" class="btn btn-dark btn-rounded waves-effect waves-light"
                                 style="float: right">Add Homework</a> <br> <br>
 
                             <h4 class="card-title">Homrwork All Data </h4>
@@ -44,14 +44,11 @@
                                             <td style="width: 20%"> {{ $item->category }} </td>
                                             <td style="width: 25%"> {!! $item->description !!} </td>
                                             <td style="width: 10%"> {{ $item->file }} </td>
-                                            
-                                            <td>
-                                                <a href="" class="btn btn-info sm" title="Edit Data"> <i
-                                                        class="fas fa-edit"></i>
-                                                </a>
 
-                                                <a href="" class="btn btn-danger sm" title="Delete Data"
-                                                    id="delete"> <i class="fas fa-trash-alt"></i>
+                                            <td>
+                                                <a href="{{ route('homework.delete', $item->id) }}"
+                                                    class="btn btn-danger sm" title="Delete Data" id="delete"> <i
+                                                        class="fas fa-trash-alt"></i>
                                                 </a>
                                             </td>
                                         </tr>

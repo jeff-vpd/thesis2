@@ -20,7 +20,7 @@ class AdminMiddleware
         if (Auth::check()) {
             if (Auth::user()->role == '1') {
                 return $next($request);
-            } else {
+            } elseif  (Auth::user()->role == null){
                 return redirect('/student/dashboard')->with('message', 'Access denied as you are not an ADMIN');
             }
         } else {

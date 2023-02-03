@@ -16,9 +16,6 @@ return new class extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->string('title')->nullable();    
-            $table->string('level')->nullable();
-            $table->integer('subject_id')->nullable();
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
             $table->timestamps();

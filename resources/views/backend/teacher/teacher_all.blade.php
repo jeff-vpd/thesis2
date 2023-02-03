@@ -28,19 +28,15 @@
                                         <th>Title</th>
                                         <th width="20%">Name</th>
                                         <th>Level</th>
-                                        <th>Subject</th>
                                         <th>Action</th>
                                 </thead>
                                 <tbody>
-                                    @foreach ($teacher as $key => $item)
+                                    @foreach ($user as $key => $item)
                                         <tr>
                                             <td> {{ $key + 1 }} </td>
                                             <td> {{ $item->title }} </td>
                                             <td> {{ $item->name }} </td>
                                             <td> {{ $item->level }} </td>
-                                            <td> {{ $item->subject->name }} </td>
-
-
                                             <td>
                                                 <a href="{{route('teacher.edit', $item->id)}}" class="btn btn-info sm"
                                                     title="Edit Data"> <i class="fas fa-edit"></i>
