@@ -70,7 +70,7 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         $notification = [
-            'message' => $user +'has been successfully registered!',
+            'message' => 'User has been successfully registered!',
             'alert-type' => 'success',
         ];
         return redirect()

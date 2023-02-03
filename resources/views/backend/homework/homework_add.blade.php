@@ -1,8 +1,6 @@
 @extends('admin.admin_master')
 @section('admin')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
-    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
     <div class="page-content">
         <div class="container-fluid">
@@ -12,12 +10,14 @@
                         <div class="card-body">
                             <h4 class="card-title">Add Subject Page </h4><br><br>
 
-                            <form method="post" action="{{route('homework.stores')}}" id="myForm" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('homework.stores') }}" id="myForm"
+                                enctype="multipart/form-data">
                                 @csrf
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Subject</label>
                                     <div class="col-sm-10">
-                                        <select name="subject_id" class="form-select" aria-label="Default select example" required>
+                                        <select name="subject_id" class="form-select" aria-label="Default select example"
+                                            required>
                                             <option value="">Open this select menu</option>
                                             @foreach ($subject as $sub)
                                                 <option value="{{ $sub->id }}">{{ $sub->name }}</option>
@@ -28,8 +28,8 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Teacher</label>
                                     <div class="form-group col-sm-10">
-                                        <input  class="form-control" type="text"
-                                            value="{{Auth::user()->name}}" readonly>
+                                        <input class="form-control" type="text" value="{{ Auth::user()->name }}"
+                                            readonly>
                                     </div>
                                 </div>
                                 <!-- end row -->
@@ -53,24 +53,18 @@
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Description</label>
                                     <div class="form-group col-sm-10">
-
-                                        <!-- Create the editor container -->
-                                        <div id="descriptionQuill">
-                                            <p>White your description here</p>
-                                            <p><br></p>
-                                        </div>
-                                        <textarea name="description" id="description" cols="30" rows="10" style="display: none"></textarea>
-
+                                        <input name="description" class="form-control" type="textarea"
+                                            placeholder="Homework description" required>
                                     </div>
-                                </div> <br>
-                                <div>&nbsp;</div>
+                                </div>
                                 <!-- end row -->
 
                                 <!-- end row -->
                                 <div class="row mb-3">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">File Upload</label>
                                     <div class="form-group col-sm-10">
-                                        <input class="form-control form-control" name="file" id="chooseFile" type="file">
+                                        <input class="form-control form-control" name="file" id="chooseFile"
+                                            type="file">
                                     </div>
                                 </div>
                                 <!-- end row -->
@@ -159,12 +153,5 @@
         });
     </script>
 
-    <script>
-        var quill = new Quill('#descriptionQuill', {
-            theme: 'snow'
-        });
-        $("#myForm").on("submit", function() {
-            $("#description").val($("#descriptionQuill .ql-editor").html());
-        });
-    </script>
+
 @endsection

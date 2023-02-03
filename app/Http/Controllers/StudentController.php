@@ -175,6 +175,7 @@ class StudentController extends Controller
         return redirect()
             ->route('student.all')
             ->with($notification);
+        
     }//End Method
 
     public function Myhomeworks(){

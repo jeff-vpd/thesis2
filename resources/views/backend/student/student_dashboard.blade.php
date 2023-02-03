@@ -1,200 +1,157 @@
-@extends('admin.admin_master')
+@extends('admin.admin_master_student')
 @section('admin')
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css"
         rel="stylesheet">
     <link rel="stylesheet" href="{{ url('/css/student/style.student.css') }}">
-    <div class="page-content">
-        <div class="container-fluid">
-            <div class="container text-center">
-                <div class="heading">
-                    <h1 class="heading__title">My Homework Dashboard</h1>
-                </div>
-                <div class="container px-4 text-center">
-                    <div class="row gx-3">
-                        @foreach ($homework as $item)
-                            <div class="col-6 p-3 mb-5 bg-body-tertiary rounded">
-                                <div class="cards">
-                                    <div class="card card-1 row">
-                                        <div class="card__icon" style="color: rgb(44, 42, 42)"><i
-                                                class=" fas fa-file
-                                            "></i>
-                                            {{ $item->category }}
-                                        </div>
-                                        <div>
-                                            <p class="card__exit" style="display: none"><i class="fas fa-times"></i></p>
-                                        </div>
-                                        <div>
-                                            <h3 class="card__title" style="color:rgb(51, 51, 51)">Subject: <em>{{ $item->subject->name }}</em></h3>
-                                        </div>
-                                        <div>
-                                            <p class="card__apply">
-                                                <a class="card__link" href="{{ route('student.homework', $item->id) }}" style="font-size: 20px">See
-                                                    more! <i class="fas fa-arrow-right"></i></a>
-                                            </p>
-                                        </div>
+    <div class="row mt-5" style="padding-top: 100px">
+      <h1 class="text-center">Homeworks</h1><br><br><br>
+        @foreach ($homework as $item)
+            <div class="col-4">
+                <div class="card mb-5" style="margin: auto;">
+                    <div class="card__header">
+                        <img src="https://source.unsplash.com/600x400/?computer" alt="card__image" class="card__image"
+                            width="600">
+                    </div>
+                    <div class="card__body">
+                        <span class="tag tag-blue">{{ $item->subject->name }}</span>
+                        <h4>{{ $item->category }}</h4>
 
-                                    </div>
-                                </div>
-                            </div> {{-- End col  --}}
-                        @endforeach
-                    </div> {{-- End row --}}
+                        <p id="long-text-{{ $loop->index }}" style="display: none; text-align:justify">
+                            {!! $item->description !!}
+                        </p>
 
-                    <div class="main-container">
+                        <div class="row">
+                            <div class="col-6">
+                                <a href="#" id="toggle-text-{{ $loop->index }}">See More</a>
+
+                            </div>
+                            <div class="col-6"> <a class="card__link float-end"
+                                    href="{{ route('student.homework', $item->id) }}" style="font-size: 15px">View
+                                    details <i class="fas fa-arrow-right"></i></a></div>
+                        </div>
+
+
 
 
                     </div>
-
-                    {{-- End row --}}
-
-
+                    <div class="card__footer">
+                        <div class="user">
+                            <img src="https://i.pravatar.cc/40?img=1" alt="user__image" class="user__image">
+                            <div class="user__info">
+                                <h5>{{ $item->user->name }}</h5>
+                                <small>{{ $item->created_at }}</small>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </div> {{-- End of column --}}
+        @endforeach
     </div>
-
-
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-                Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-        }
+      *,
+      *::before,
+      *::after {
+          box-sizing: border-box;
+          padding: 0;
+          margin: 0;
+      }
 
-        .main-container {
-            padding: 30px;
-        }
+      .p {
+          text-align: justify;
+      }
 
-        /* HEADING */
+      .container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          max-width: 1200px;
+          margin-block: 2rem;
+          gap: 2rem;
+      }
 
-        .heading {
-            text-align: center;
-        }
+      img {
+          max-width: 100%;
+          object-fit: cover;
+      }
 
-        .heading__title {
-            font-weight: 600;
-        }
+      .card {
+          display: flex;
+          flex-direction: column;
+          width: clamp(20rem, calc(20rem + 2vw), 22rem);
+          overflow: hidden;
+          box-shadow: 0 .1rem 1rem rgba(0, 0, 0, 0.1);
+          border-radius: 1em;
+          background: #ECE9E6;
+          background: linear-gradient(to right, #FFFFFF, #ECE9E6);
 
-        .heading__credits {
-            margin: 10px 0px;
-            color: #888888;
-            font-size: 25px;
-            transition: all 0.5s;
-        }
+      }
 
-        .heading__link {
-            text-decoration: none;
-        }
 
-        .heading__credits .heading__link {
-            color: inherit;
-        }
 
-        /* CARDS */
+      .card__body {
+          padding: 1rem;
+          display: flex;
+          flex-direction: column;
+          gap: .5rem;
+      }
 
-        .cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
 
-        .card {
-            margin: 20px;
-            padding: 20px;
-            width: 500px;
-            min-height: 200px;
-            display: grid;
-            grid-template-rows: 20px 50px 1fr 50px;
-            border-radius: 10px;
-            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
-            transition: all 0.2s;
-        }
+      .tag {
+          align-self: flex-start;
+          padding: .25em .75em;
+          border-radius: 1em;
+          font-size: .75rem;
+      }
 
-        .card:hover {
-            box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.4);
-            transform: scale(1.01);
-        }
+      .tag+.tag {
+          margin-left: .5em;
+      }
 
-        .card__link,
-        .card__exit,
-        .card__icon {
-            position: relative;
-            text-decoration: none;
-            color: rgba(255, 255, 255, 0.9);
-        }
+      .tag-blue {
+          background: #56CCF2;
+          background: linear-gradient(to bottom, #2F80ED, #56CCF2);
+          color: #fafafa;
+      }
 
-        .card__link::after {
-            position: absolute;
-            top: 25px;
-            left: 0;
-            content: "";
-            width: 0%;
-            height: 3px;
-            background-color: rgba(255, 255, 255, 0.6);
-            transition: all 0.5s;
-        }
+      .tag-brown {
+          background: #D1913C;
+          background: linear-gradient(to bottom, #FFD194, #D1913C);
+          color: #fafafa;
+      }
 
-        .card__link:hover::after {
-            width: 100%;
-        }
+      .tag-red {
+          background: #cb2d3e;
+          background: linear-gradient(to bottom, #ef473a, #cb2d3e);
+          color: #fafafa;
+      }
 
-        .card__exit {
-            grid-row: 1/2;
-            justify-self: end;
-        }
+      .card__body h4 {
+          font-size: 1.5rem;
+          text-transform: capitalize;
+      }
 
-        .card__icon {
-            grid-row: 2/3;
-            font-size: 30px;
-        }
+      .card__footer {
+          display: flex;
+          padding: 1rem;
+          margin-top: auto;
+      }
 
-        .card__title {
-            grid-row: 3/4;
-            font-weight: 400;
-            color: #ffffff;
-        }
+      .user {
+          display: flex;
+          gap: .5rem;
+      }
 
-        .card__apply {
-            grid-row: 4/5;
-            align-self: center;
-        }
+      .user__image {
+          border-radius: 50%;
+      }
 
-        /* CARD BACKGROUNDS */
-
-        .card-1 {
-            background: radial-gradient(#1fe4f5, #3fbafe);
-        }
-
-        .card-2 {
-            background: radial-gradient(#fbc1cc, #fa99b2);
-        }
-
-        .card-3 {
-            background: radial-gradient(#76b2fe, #b69efe);
-        }
-
-        .card-4 {
-            background: radial-gradient(#60efbc, #58d5c9);
-        }
-
-        .card-5 {
-            background: radial-gradient(#f588d8, #c0a3e5);
-        }
-
-        /* RESPONSIVE */
-
-        @media (max-width: 1600px) {
-            .cards {
-                justify-content: center;
-            }
-        }
-    </style>
+      .user__info>small {
+          color: #666;
+      }
+  </style>
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -268,6 +225,22 @@
                     $('#showImage').attr('src', e.target.result);
                 }
                 reader.readAsDataURL(e.target.files['0']);
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const toggleButtons = document.querySelectorAll("[id^='toggle-text-']");
+            toggleButtons.forEach(function(toggleButton) {
+                const textId = toggleButton.id.replace("toggle-text-", "long-text-");
+                const text = document.getElementById(textId);
+                toggleButton.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    text.style.display = (text.style.display === "none") ? "block" : "none";
+                    toggleButton.textContent = (toggleButton.textContent === "See More") ?
+                        "See Less" : "See More";
+                });
             });
         });
     </script>
