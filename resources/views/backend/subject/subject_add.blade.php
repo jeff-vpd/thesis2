@@ -8,7 +8,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title">Add Subject Page </h4><br><br>
-
+{{-- this is just for testing --}}
                             <form method="post" action="{{ route('subject.store') }}" id="myForm"
                                 enctype="multipart/form-data">
                                 @csrf
