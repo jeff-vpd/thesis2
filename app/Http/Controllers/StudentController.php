@@ -173,7 +173,7 @@ class StudentController extends Controller
         ];
 
         return redirect()
-            ->route('student.all')
+            ->route('student.myhomeworks')
             ->with($notification);
         
     }//End Method
